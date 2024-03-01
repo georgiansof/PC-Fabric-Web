@@ -1,6 +1,6 @@
 # PC-Fabric-Web
 
-[RO]
+[RO]<br/>
 PC Fabric este un site web al unui magazin de piese PC. Acesta va permite afisarea / filtrarea / sortarea dupa mai multe criterii a produselor, adaugarea lor in cos si verificarea compatibilitatii pieselor selectate ( doar a celor pentru care se selecteaza asamblare componenta, pentru a permite cumpararea unor piese independente care sa nu fie neaparat compatibile ( ex. cineva cumpara si pentru altcineva ). <br/>
 
 Pagini:  <br/>
