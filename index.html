@@ -21,7 +21,17 @@
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="msapplication-config" content="./resurse/favicon/browserconfig.xml">
         <meta name="theme-color" content="#ffffff">
-        <!-- -------- -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <!--
+        <style>
+            p {
+                color: #F573EC !important;
+            }
+        </style>
+        -->
+        <link rel="stylesheet" href="./resurse/css/stil.css" type="text/css" />
+        <!-- ***************************************** -->
     </head>
 
     <body>
@@ -29,12 +39,13 @@
             <h1>PC Fabric</h1>
             <nav>
                 <ul>
-                    <!--<li><a href="https://www.google.com">Google</a></li>-->
+                    <li><a href="https://www.google.com">Google in aceeasi pagina</a></li>
                     <!--<li><a href="pagina2.html"></a></li>-->
                     <li>Acasa
                         <ul>
                             <li><a href="#welcome">Bine ați venit</a></li>
                             <li><a href="#promo">Promoții</a></li>
+                            <li><a href="http://www.google.com" target="_blank"> google pag noua</a></li>
                         </ul>
                     </li>
 
@@ -44,26 +55,85 @@
         </header>
 
         <main>
+            <strong>Atentie! Magazinul fizic va fi închis pentru renovare !</strong>
             <section id="welcome">
                 <h2>Bine ați venit !</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.   
+                <p><i> Placi grafice, SSD, etc.</i> Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.   
                 </p>
                 <img src="./resurse/imagini/imagine p1.jpg" alt="Logo PC"/>
             </section>
             <section id="promo">
-                <h2>Promoții</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  </p>
+                <h2>Promoții de până la <s>10%</s> <ins>40%</ins> doar la <abbr title="PC Fabric">PCF</abbr></h2>
+                <p>
+                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mi>
+                              <mglyph valign="-0.2em" height="1em" src="./resurse/imagini/tastaturaicon.jpg" alt="(tastatura icon)"/>
+                            </mi>
+                            <mo>+</mo>
+                            <mi>
+                              <mglyph valign="-0.2em" height="1em" src="./resurse/imagini/mouseicon.png" alt="(mouse icon)"/>
+                            </mi>
+                            <mo>=</mo>
+                            <mtext>extra</mtext>
+                            <mspace width="0.5em"/>
+                            <mn>10</mn>
+                            <mo>%</mo>
+                            <mspace width="0.5em"/>
+                            <mtext>reducere (se aplica prima)</mtext>
+                          </mrow>
+                          <mspace linebreak='newline' />
+                    </math>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  </p>
                 <section>
                     <h3>În limita stocului disponibil !</h3>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    <h3>Ofertă carcasă cadou</h3>
+                    <h3><b>Ofertă</b> carcasă cadou</h3>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                 </section>
             </section>
+
+            <summary id="index-intrebari">
+                <h2>Întrebări frecvente</h2>
+                <details>
+                    <summary>Produsele dumneavoastră au garanție?</summary>
+                    <p>Da! 2 ani sau chiar 3 ani dacă optați pentru garanție extinsă. </p>
+                </details>
+                <details>
+                    <summary>Produsele dumneavoastră au garanție?</summary>
+                    <p>Da! 2 ani sau chiar 3 ani dacă optați pentru garanție extinsă. </p>
+                </details>
+
+            </summary>
+
+            <figure>
+                <picture> <!-- imagini diferite in functie de viewport width -->
+                    <source srcset="./resurse/imagini/tastatura.jpg" media="(max-width:700px)"/>
+                    <source srcset="./resurse/imagini/oldpc.jpg" media="(max-width:1200px)"/>
+                    <img src="./resurse/imagini/laptop.jpg" alt="imagine reprezentativa" title="PC"/>
+                </picture>
+                <figcaption><b>Calculatoare</b></figcaption>
+            </figure>
+            <div class="taburi-iframe">
+                <a href="https://www.youtube.com/embed/N2nMiid0MbI?si=9aFjqQ9WF7obO8HA" target="ifr-video">PC BUILD 1</a>
+                <a href="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" target="ifr-video">Cars</a>
+            </div>
+            <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </main>
 
         <footer>
-
+            <a href="#" title="mergi sus" id="link-top"><div id="triunghi">aaa</div></a>
+            <!--
+            <a href="fisier.pdf" download> Fisier descarcabil </a>
+            -->
+            <address>
+                Bulevardul Regina Elisabeta 3, București, Sector 1, România <br/>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.8843011393164!2d26.097011776865713!3d44.43553547107576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFacultatea%20de%20Matematic%C4%83%20%C8%99i%20Informatic%C4%83!5e0!3m2!1sro!2sro!4v1709540026305!5m2!1sro!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="mailto:georgian.sofronea@gmail.com">Mail</a> <br/>
+                <a href="tel:+40712345678">Telefon</a> <br/>
+                <a href="https://wa.me/40712345678?text=I'm%20interested%20in%20your%20offer">Whatsapp</a>
+            </address>
+            <p><small>Copyright &copy; <time datetime="2024-03-04">4 martie 2024</time></small></p>
         </footer>
     </body>
 </html>

@@ -1,0 +1,14 @@
+body {
+    --culoare-fundal: #B0A3FF;
+    --culoare-border: #A07020;
+}
+
+p {
+    color: #000000;
+    background-color: var(--culoare-fundal);
+}
+
+h1 {
+    border: 1px solid var(--culoare-border);
+    
+}
