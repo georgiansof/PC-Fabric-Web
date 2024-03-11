@@ -1,6 +1,9 @@
 body {
     --culoare-fundal: #B0A3FF;
     --culoare-border: #A07020;
+    --dimensiune-border: 1px;
+    --dimensiune-spatiere: 50px;
+    padding-left: var(--dimensiune-spatiere);
 }
 
 p {
@@ -9,6 +12,6 @@ p {
 }
 
 h1 {
-    border: 1px solid var(--culoare-border);
+    border: var(--dimensiune-border) solid var(--culoare-border);
     
 }
