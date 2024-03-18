@@ -37,125 +37,82 @@
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 
-        <link rel="stylesheet" href="./resurse/css/general.css" type="text/css" />
+        <link rel="stylesheet" href="./resurse/css/reset.css" type="text/css" />
         <link rel="stylesheet" href="./resurse/css/stil.css" type="text/css" />
+        <link rel="stylesheet" href="./resurse/css/general.css" type="text/css" />
         <link rel="stylesheet" href="./resurse/css/layout.css" type="text/css" />
         <!-- ***************************************** -->
     </head>
 
     <body>
         <header>
-            <h1>PC Fabric</h1>
-            <nav>
-                <ul>
-                    <li><a href="https://www.google.com">Google in aceeasi pagina</a></li>
-                    <!--<li><a href="pagina2.html"></a></li>-->
-                    <li>Acasa
-                        <ul>
-                            <li><a href="#welcome">Bine ați venit</a></li>
-                            <li><a href="#promotii">Promoții</a></li>
-                            <li><a href="http://www.google.com" target="_blank"> google pag noua</a></li>
-                        </ul>
-                    </li>
+            <div id="header-div">
+                <nav id="header-nav">
+                    <ul>
+                        <li><a href="https://www.google.com">Google in aceeasi pagina</a></li>
+                        <!--<li><a href="pagina2.html"></a></li>-->
+                        <li>Acasa
+                            <ul>
+                                <li><a href="#welcome">Bine ați venit</a></li>
+                                <li><a href="#promotii">Promoții</a></li>
+                                <li><a href="http://www.google.com" target="_blank"> google pag noua</a></li>
+                            </ul>
+                        </li>
 
-                    <li><a href="">Produse</a></li>
-                </ul>
-            </nav>
+                        <li><a href="">Produse</a></li>
+                    </ul>
+                </nav>
+                <div id="spatiator-header"></div>
+                <div id="header-name">
+                    <h1>PC Fabric</h1>
+                </div>
+            </div>
         </header>
 
         <main>
             <div id="grid-pagina">
-                <strong>Atentie! Magazinul fizic va fi închis pentru renovare !</strong>
                 <section id="welcome">
-                    <h2>Bine ați venit !</h2>
-                    <p><i> Placi grafice, SSD, etc.</i> Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.   
+                    <h2>Bine ați venit la PC Fabric!</h2>
+                    <p>La noi gasiti cele mai bune oferte la componente PC, iar specialitatea noastră: vă spunem dacă sunt compatibile și dacă doriți, le și asamblăm pentru dumneavoastră și livrăm PC-ul gata făcut la ușă !</p>
+                </section>
+                <section id="news">
+                    <section id="promotii">
+                        <h2>Promoții de până la <s>10%</s> <ins>40%</ins> doar la <abbr title="PC Fabric">PCF</abbr></h2>
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mrow>
+                                    <mi>
+                                    <mglyph valign="-0.2em" height="1em" src="./resurse/imagini/tastaturaicon.jpg" alt="(tastatura icon)"/>
+                                    </mi>
+                                    <mo>+</mo>
+                                    <mi>
+                                    <mglyph valign="-0.2em" height="1em" src="./resurse/imagini/mouseicon.png" alt="(mouse icon)"/>
+                                    </mi>
+                                    <mo>=</mo>
+                                    <mtext id="math-extra">extra</mtext>
+                                    <mspace width="0.5em"/>
+                                    <mn>10</mn>
+                                    <mo>%</mo>
+                                    <mspace width="0.5em"/>
+                                    <mtext>reducere (se aplica prima)</mtext>
+                                </mrow>
+                                <mspace linebreak='newline' />
+                            </math>
+                            <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  </p>
+                        <section>
+                            <h3>În limita stocului disponibil !</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <h3><b>Ofertă</b> carcasă cadou</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                        </section>
+                    </section>
+                </section>
+                <section id="calendar">
+                    <p>PLACEHOLDER CALENDAR 
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
                     </p>
-                    <img src="./resurse/imagini/imagine p1.jpg" alt="Logo PC"/>
-                </section>
-                <section id="promotii">
-                    <h2>Promoții de până la <s>10%</s> <ins>40%</ins> doar la <abbr title="PC Fabric">PCF</abbr></h2>
-                    <p>
-                        <math xmlns="http://www.w3.org/1998/Math/MathML">
-                            <mrow>
-                                <mi>
-                                <mglyph valign="-0.2em" height="1em" src="./resurse/imagini/tastaturaicon.jpg" alt="(tastatura icon)"/>
-                                </mi>
-                                <mo>+</mo>
-                                <mi>
-                                <mglyph valign="-0.2em" height="1em" src="./resurse/imagini/mouseicon.png" alt="(mouse icon)"/>
-                                </mi>
-                                <mo>=</mo>
-                                <mtext>extra</mtext>
-                                <mspace width="0.5em"/>
-                                <mn>10</mn>
-                                <mo>%</mo>
-                                <mspace width="0.5em"/>
-                                <mtext>reducere (se aplica prima)</mtext>
-                            </mrow>
-                            <mspace linebreak='newline' />
-                        </math>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.  </p>
-                    <section>
-                        <h3>În limita stocului disponibil !</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        <h3><b>Ofertă</b> carcasă cadou</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </section>
-                </section>
-                <section id="produse">
-                    <h2>Produsele noastre</h2>
-                    <p>Vă oferim o multitudine de metode să câștigați cu succes kilograme în plus.</p>
-                    <section>
-                        <h3>Torturi</h3>
-                        <p>În caz că nu le puteți mânca fiindcă sunteți la dietă și doar vă uitați la ele, puneți accentul pe u!</p>
-                        <p>Avem torturi cu:</p>
-                        <ul>
-                            <li>ciocolată</li>
-                            <li>frișcă</li>
-                            <li>fructe</li>
-                            <li>dulceață</li>
-                            <li>înghețată</li>
-                            <li>regrete</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Prăjituri</h3>
-                        <p>Oferim prăjiturile clasice plus câteva creations personnelles, oui!</p>
-                        <p>Prăjituri:</p>
-                        <ul>
-                            <li>savarină</li>
-                            <li>amandină</li>
-                            <li>tartă cu fructe</li>
-                            <li>doboș</li>
-                            <li>carpați (orientali, meridionali și occidentali)</li>
-                            <li>ecler</li>
-                            <li>tiramisu</li>
-                            <li>colivă</li>
-                        </ul>
-                    </section>
-                </section>
-                <figure id="fig1" class="fg-img">
-                    <img src="resurse/imagini/laptop.jpg" alt="laptop">
-                    <figcaption>laptop</figcaption>
-                </figure>
-                <figure id="fig2" class="fg-img">
-                <img src="resurse/imagini/tastatura.jpg" alt="tast">
-                <figcaption>tastatura</figcaption>
-                </figure>
-                <figure  id="fig3" class="fg-img">
-                <img src="resurse/imagini/oldpc.jpg" alt="oldpc">
-                <figcaption>oldpc</figcaption>
-                </figure>
-                <section id="anunturi">
-                    <h2>Anunțuri</h2> <p><time datetime="2022-01-05">5 ianuarie 2022</time> <strong>No more Covid!!!!</strong></p>
-                   
-                    <p><time datetime="2020-07-05">5 iulie 2020</time> Am adăugat o prăjitură noua în meniu</p>
-                    <p><time datetime="2020-09-15">15 septembrie 2020</time> Am adăugat un fursec nou în meniu</p>
-                    <p><time datetime="2020-12-20">20 decembrie 2020</time> Nu avem nimic de anunțat, dar ne era dor de voi.</p>
-                    <p><time datetime="2020-12-28">28 decembrie 2020</time> Am adăugat o prăjitură noua în meniu</p>
-                    <p><time datetime="2021-01-01">1 ianuarie 2021</time> Un an nou fericit!</p>
-                    <p><time datetime="2021-02-11">11 februarie 2021</time> Studiile au arătat că prăjiturile sunt cele mai sănătoase alimente. 
-                        E adevărat că doar studiile noastre, dar astea sunt detalii. </p>
                 </section>
                 <section id="orar">
                     <h2>Orar</h2>
@@ -231,19 +188,51 @@
                         <tfoot><tr><td colspan="6">Închis cu ocazia sărbătorilor legale sau când ne e mai lene așa.</td></tr></tfoot>
                     </table> 
                 </section>
-                <summary id="index-intrebari">
-                    <h2>Întrebări frecvente</h2>
-                    <details>
-                        <summary>Produsele dumneavoastră au garanție?</summary>
-                        <p>Da! 2 ani sau chiar 3 ani dacă optați pentru garanție extinsă. </p>
-                    </details>
-                    <details>
-                        <summary>Produsele dumneavoastră au garanție?</summary>
-                        <p>Da! 2 ani sau chiar 3 ani dacă optați pentru garanție extinsă. </p>
-                    </details>
+                <section id="anunturi">
+                    <h2>Anunțuri</h2> <p><time datetime="2022-01-05">5 ianuarie 2022</time> <strong>No more Covid!!!!</strong></p>
+                
+                    <p><time datetime="2020-07-05">5 iulie 2020</time> Am adăugat o prăjitură noua în meniu</p>
+                    <p><time datetime="2020-09-15">15 septembrie 2020</time> Am adăugat un fursec nou în meniu</p>
+                    <p><time datetime="2020-12-20">20 decembrie 2020</time> Nu avem nimic de anunțat, dar ne era dor de voi.</p>
+                    <p><time datetime="2020-12-28">28 decembrie 2020</time> Am adăugat o prăjitură noua în meniu</p>
+                    <p><time datetime="2021-01-01">1 ianuarie 2021</time> Un an nou fericit!</p>
+                    <p><time datetime="2021-02-11">11 februarie 2021</time> Studiile au arătat că prăjiturile sunt cele mai sănătoase alimente. 
+                        E adevărat că doar studiile noastre, dar astea sunt detalii. </p>
+                </section>
+                <section id="lista-utilizatori">
+                    <p>PLACEHOLDER LISTA UTILIZATORI 
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
-                </summary>
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                    </p>
+                </section>
+                <section id="statistici">
+                    <p>PLACEHOLDER STATISTICI
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                    </p>
+                </section>
+                <section id="date-site">
+                    <p>PLACEHOLDER DATE SITE
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                    </p>
+                </section>
             </div>
+            <summary id="index-intrebari">
+                <h2>Întrebări frecvente</h2>
+                <details>
+                    <summary>Produsele dumneavoastră au garanție?</summary>
+                    <p>Da! 2 ani sau chiar 3 ani dacă optați pentru garanție extinsă. </p>
+                </details>
+                <details>
+                    <summary>Produsele dumneavoastră au garanție?</summary>
+                    <p>Da! 2 ani sau chiar 3 ani dacă optați pentru garanție extinsă. </p>
+                </details>
+
+            </summary>
             <figure>
                 <picture> <!-- imagini diferite in functie de viewport width -->
                     <source srcset="./resurse/imagini/tastatura.jpg" media="(max-width:700px)"/>
@@ -252,21 +241,23 @@
                 </picture>
                 <figcaption><b>Calculatoare</b></figcaption>
             </figure>
-            <div class="taburi-iframe">
-                <a href="https://www.youtube.com/embed/N2nMiid0MbI?si=9aFjqQ9WF7obO8HA" target="ifr-video">PC BUILD 1</a>
-                <a href="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" target="ifr-video">Cars</a>
+            <div class="container-iframe">
+                <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="taburi-iframe">
+                    <a href="https://www.youtube.com/embed/N2nMiid0MbI?si=9aFjqQ9WF7obO8HA" target="ifr-video">PC BUILD 1</a>
+                    <a href="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" target="ifr-video">Cars</a>
+                </div>
             </div>
-            <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </main>
 
         <footer>
-            <a href="#" title="mergi sus" id="link-top"><div id="sageata">&#8593;</div></a>
+            <a href="#" title="mergi sus" id="link-top"><div id="cerc"></div><div id="sageata">&#8593;</div></a>
             <!--
             <a href="fisier.pdf" download> Fisier descarcabil </a>
             -->
             <address>
                 Bulevardul Regina Elisabeta 3, București, Sector 1, România <br/>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.8843011393164!2d26.097011776865713!3d44.43553547107576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFacultatea%20de%20Matematic%C4%83%20%C8%99i%20Informatic%C4%83!5e0!3m2!1sro!2sro!4v1709540026305!5m2!1sro!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe id="locatie" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.8843011393164!2d26.097011776865713!3d44.43553547107576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFacultatea%20de%20Matematic%C4%83%20%C8%99i%20Informatic%C4%83!5e0!3m2!1sro!2sro!4v1709540026305!5m2!1sro!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 <br>
                 <a href="mailto:georgian.sofronea@gmail.com">Mail</a> <br/>
                 <i class="fa-solid fa-phone"></i> <a href="tel:+40712345678">Telefon</a> <br/>

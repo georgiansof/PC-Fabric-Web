@@ -1,21 +1,41 @@
 html { /* sau selectorul html */
-    font-size: 18px;
-    font-family: "Madimi One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    --gridgapsize: 20px;
+    --gridgapsize-med: 10px;
+    --gridmargin-mic: 5px;
 }
+
+#header-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+#header-nav {
+    padding-top:1rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+}
+
+#header-name {
+    font-size: 4rem;
+    font-weight: bolder;
+    padding-right: 2rem;
+}
+
+#spatiator-header {
+    width: 40%;
+}
+
 
 #grid-pagina {
     display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(3, 1fr) /*1fr 1fr 1fr*/;
-    grid-template-areas: "welcome welcome welcome"
-                         "promotii promotii orar"
-                         "fig1 produse produse"
-                         "fig2 produse produse"
-                         "fig3 produse produse"
-                         "index-intrebari index-intrebari index-intrebari"
-                         "anunturi anunturi anunturi"
+    gap: var(--gridgapsize);
+    grid-template-columns: repeat(4, 1fr) /*1fr 1fr 1fr*/;
+    grid-template-areas: "welcome welcome welcome welcome"
+                         "news news news news"
+                         "calendar orar orar anunturi"
+                         "lista-utilizatori statistici date-site date-site"
                          ;
     
 }
@@ -32,68 +52,78 @@ html { /* sau selectorul html */
 
 #welcome {
     grid-area: welcome;
+    margin-top: 1rem;
 }
-#promotii {
-    grid-area: promotii;
+
+#news {
+    grid-area: news;
 }
-#anunturi {
-    grid-area: anunturi;
+
+#calendar {
+    grid-area: calendar;
 }
 
 #orar {
     grid-area: orar;
 }
- 
-#fig1 {
-    grid-area: fig1;
-}
-#fig2 {
-    grid-area: fig2;
-}
-#fig3 {
-    grid-area: fig3;
-}
-#produse {
-    grid-area: produse;
-}
-#index-intrebari {
-    grid-area: index-intrebari;
+
+#anunturi {
+    grid-area: anunturi;
 }
 
-@media screen and (max-width: 1200px) {
+#lista-utilizatori {
+    grid-area: lista-utilizatori;
+}
+
+#statistici {
+    grid-area: statistici;
+}
+
+#date-site {
+    grid-area: date-site;
+}
+
+#locatie {
+    margin-left: 1em;
+}
+
+#tab-orar {
+    border-spacing: 2px;
+}
+
+@media screen and (max-width: 1000px) {
     #grid-pagina {
-        grid-template-columns: repeat(2, 1fr) /*1fr 1fr 1fr*/;
+        grid-template-columns: repeat(2, 1fr) /*1fr 1fr*/;
         grid-template-areas: "welcome welcome"
-                             "promotii promotii"
+                             "news news"
+                             "calendar anunturi"
                              "orar orar"
-                             "fig1 produse"
-                             "fig2 produse"
-                             "fig3 produse"
-                             "index-intrebari index-intrebari"
-                             "anunturi anunturi"
+                             "date-site date-site"
+                             "statistici lista-utilizatori"
                              ;
-        
+        gap: var(--gridgapsize-med);
     }
     html {
         font-size: 15px;
     }
 
-    .intro-oferte {
-        font-size: 1.5rem;
-    }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
     html {
-        font-size: 12px;
+        font-size: 13px;
     }
     #grid-pagina {
         display: block;
     }
     #grid-pagina>* {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: var(--gridmargin-mic);
+        margin-bottom: var(--gridmargin-mic);
+    }
+    
+    #tab-orar {
+        border-spacing: 0px;
     }
     
 }
-/* TODO: create non-existant objects */
+
