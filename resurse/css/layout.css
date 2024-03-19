@@ -7,7 +7,7 @@ html { /* sau selectorul html */
 #header-div {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100vw;
 }
 
@@ -20,11 +20,7 @@ html { /* sau selectorul html */
 #header-name {
     font-size: 4rem;
     font-weight: bolder;
-    padding-right: 2rem;
-}
-
-#spatiator-header {
-    width: 40%;
+    padding-right: 4rem;
 }
 
 
@@ -41,7 +37,7 @@ html { /* sau selectorul html */
 }
 
 #grid-pagina>* {
-    outline: 2px solid skyblue;
+    border: 2px solid skyblue;
     padding: 1em;
 }
 

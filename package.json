@@ -1,0 +1,15 @@
+{
+  "name": "pc-fabric-web",
+  "version": "1.0.0",
+  "description": "[RO]<br/>\r PC Fabric este un site web al unui magazin de piese PC. Acesta va permite afisarea / filtrarea / sortarea dupa mai multe criterii a produselor, adaugarea lor in cos si verificarea compatibilitatii pieselor selectate ( doar a celor pentru care se selecteaza asamblare componenta, pentru a permite cumpararea unor piese independente care sa nu fie neaparat compatibile ( ex. cineva cumpara si pentru altcineva ). <br/>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.3"
+  }
+}
