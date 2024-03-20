@@ -67,6 +67,44 @@ h3 {
     font-weight: bold;
 }
 
+#tab-orar>tbody>tr:nth-child(even) {
+    background-color: var(--culoare-4);
+}
+
+#tab-orar>tbody>tr:nth-child(odd) {
+    background-color: var(--culoare-3);
+}
+
+#tab-orar>tbody>tr {
+    transition: background-color 1s linear;
+}
+
+#tab-orar>tbody>tr:hover {
+    background-color: var(--culoare-2);
+}
+
+.taburi-iframe>a {
+    background-color: white;
+    box-shadow: inset 0px 0px 20px #03855e,
+                inset 0px 10px 10px rgba(0, 0, 0, 1);
+    text-shadow: 
+        -1px -1px 0 #fff,  
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff; 
+         
+    color: #03855e;
+
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 20%;
+    border: 2px solid white;
+    outline: 1px solid #03855e; 
+}
+
+.container-iframe>iframe {
+    border: 5px solid #03855e;
+}
+
 @media screen and (max-width: 1000px) {
     main {
         padding-left: var(--dimensiune-spatiere-ecran-mediu);

@@ -84,7 +84,7 @@
 .container-iframe {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 560px;
 }
 
 .taburi-iframe {
@@ -92,16 +92,10 @@
     display:flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-left: 5px;
 }
 
-.taburi-iframe>a {
-    border: 1px solid var(--culoare-5);
-    background-color: var(--culoare-1);
-    padding: 0.6rem;
-    margin-bottom: 0.4rem;
-}
 
 .container-iframe>iframe {
-    border: 5px solid aquamarine;
     width: 100%;
 }

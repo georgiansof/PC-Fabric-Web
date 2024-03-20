@@ -2,6 +2,7 @@ html { /* sau selectorul html */
     --gridgapsize: 20px;
     --gridgapsize-med: 10px;
     --gridmargin-mic: 5px;
+    --table-spacing: 2px;
 }
 
 #header-div {
@@ -84,8 +85,20 @@ html { /* sau selectorul html */
 }
 
 #tab-orar {
-    border-spacing: 2px;
+    border-collapse: separate;
+    border-spacing: var(--table-spacing);
 }
+
+#div-orar {
+    overflow-x: unset;
+}
+
+.taburi-iframe>a {
+    padding: 0.6rem;
+    margin-bottom: 0.4rem;
+}
+
+
 
 @media screen and (max-width: 1000px) {
     #grid-pagina {
@@ -101,6 +114,9 @@ html { /* sau selectorul html */
     }
     html {
         font-size: 15px;
+    }
+    #div-orar {
+        overflow-x: scroll;
     }
 
 }
@@ -120,6 +136,9 @@ html { /* sau selectorul html */
     #tab-orar {
         border-spacing: 0px;
     }
-    
+
+    #div-orar {
+        overflow-x: scroll;
+    }
 }
 
