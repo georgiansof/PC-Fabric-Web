@@ -87,14 +87,14 @@
   width: 560px;
 }
 
-.container-iframe > iframe {
-  width: 100%;
-}
-
 .taburi-iframe {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-left: 5px;
+}
+
+.container-iframe > iframe {
+  width: 100%;
 }

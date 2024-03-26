@@ -19,12 +19,6 @@ html {
   padding-left: 2rem;
 }
 
-#header-name {
-  font-size: 4rem;
-  font-weight: bolder;
-  padding-right: 4rem;
-}
-
 #grid-pagina {
   display: grid;
   gap: var(--gridgapsize);

@@ -1,0 +1,32 @@
+.meniu {
+  display: none;
+}
+
+#hamburger-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  margin-left: 1rem;
+}
+
+.hamburger-line {
+  display: block;
+  background-color: white;
+  width: 25px;
+  height: 10px;
+  margin-bottom: 2px;
+}
+
+.meniu {
+  display: none;
+}
+
+.meniu li {
+  margin-bottom: 10px;
+}
+
+.meniu li:last-child {
+  margin-bottom: 0;
+}

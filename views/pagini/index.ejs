@@ -4,92 +4,16 @@
 -->
 <html>
     <head lang="ro">
+        <%- include("../fragmente/head.ejs") %>
+        <!-- ***************************************** -->
         <title>PC Fabric - Componente IT</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="bucuresti, calculator, pc, procesor, placa grafica, intel, amd, nvidia, asamblare, cabluri, ssd, stocare, surse alimentare">
         <meta name="description" content="PC Fabric - Construiește-ți propriul PC după bunul plac, iar noi avem grijă ca piesele tale să fie compatibile.
             Serviciu de asamblare la cerere.">
-        <meta name="author" content="Georgian Sofronea">
-        <!-- favicons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="./resurse/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./resurse/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./resurse/favicon/favicon-16x16.png">
-        <link rel="manifest" href="./resurse/favicon/site.webmanifest">
-        <link rel="mask-icon" href="./resurse/favicon/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="shortcut icon" href="./resurse/favicon/favicon.ico">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-config" content="./resurse/favicon/browserconfig.xml">
-        <meta name="theme-color" content="#ffffff">
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-        <script id="MathJax-script" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-        <!--
-        <style>
-            p {
-                color: #F573EC !important;
-            }
-        </style>
-        -->
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
-
-        <link rel="stylesheet" href="./resurse/css/reset.css" type="text/css" />
-        <link rel="stylesheet" href="./resurse/css/stil.css" type="text/css" />
-        <link rel="stylesheet" href="./resurse/css/general.css" type="text/css" />
-        <link rel="stylesheet" href="./resurse/css/layout.css" type="text/css" />
-        <link rel="stylesheet" href="./resurse/css/nav750plus.css" type="text/css" />
-        <link rel="stylesheet" href="./resurse/css/nav750minus.css" type="text/css" media="screen and (max-width:750px)"/>
-        
-        <!-- ***************************************** -->
     </head>
 
     <body>
-        <header>
-            <div id="header-div">
-                <nav id="header-nav">
-                    <input type="checkbox" id="hamburger">
-                        <div class="hamburger-line"></div>
-                        <div class="hamburger-line"></div>
-                        <div class="hamburger-line"></div>
-                    </input>
-                    <ul class="meniu">
-                        <div class="meniu_container">
-                            <li id="meniu_home"><a href="#"><img src="resurse/imagini/home.png" /> Acasa</a></li>
-                        </div>
-
-                        <div class="meniu_container">
-                            <li>
-                                <a href="#welcome">Bine ați venit</a>
-                                <ul>
-                                    <li><a href="#promotii">Promoții</a></li>
-                                    <li><a href="http://www.google.com" target="_blank"> google </a></li>
-                                </ul>
-                            </li>
-                        </div>
-
-                        <div class="meniu_container">
-                        <li><a href="">Produse</a></li>
-                        </div>
-
-                        <div class="meniu_container">
-                            <li><a href="">Produse</a></li>
-                        </div>
-
-                        <div class="meniu_container">
-                            <li><a href="">Produse</a></li>
-                        </div>
-                    </ul>
-                </nav>
-                <div id="header-name">
-                    <h1>PC Fabric</h1>
-                </div>
-            </div>
-        </header>
-
+        <%- include("../fragmente/header.ejs") %>
         <main>
             <div id="grid-pagina">
                 <section id="welcome">
@@ -102,11 +26,11 @@
                             <math xmlns="http://www.w3.org/1998/Math/MathML">
                                 <mrow>
                                     <mi>
-                                    <mglyph valign="-0.2em" height="1em" src="./resurse/imagini/tastaturaicon.jpg" alt="(tastatura icon)"/>
+                                    <mglyph valign="-0.2em" height="1em" src="/resurse/imagini/tastaturaicon.jpg" alt="(tastatura icon)"/>
                                     </mi>
                                     <mo>+</mo>
                                     <mi>
-                                    <mglyph valign="-0.2em" height="1em" src="./resurse/imagini/mouseicon.png" alt="(mouse icon)"/>
+                                    <mglyph valign="-0.2em" height="1em" src="/resurse/imagini/mouseicon.png" alt="(mouse icon)"/>
                                     </mi>
                                     <mo>=</mo>
                                     <mtext id="math-extra">extra</mtext>
@@ -257,9 +181,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
             </summary>
             <figure>
                 <picture> <!-- imagini diferite in functie de viewport width -->
-                    <source srcset="./resurse/imagini/tastatura.jpg" media="(max-width:700px)"/>
-                    <source srcset="./resurse/imagini/oldpc.jpg" media="(max-width:1200px)"/>
-                    <img src="./resurse/imagini/laptop.jpg" alt="imagine reprezentativa" title="PC"/>
+                    <source srcset="/resurse/imagini/tastatura.jpg" media="(max-width:700px)"/>
+                    <source srcset="/resurse/imagini/oldpc.jpg" media="(max-width:1200px)"/>
+                    <img src="/resurse/imagini/laptop.jpg" alt="imagine reprezentativa" title="PC"/>
                 </picture>
                 <figcaption><b>Calculatoare</b></figcaption>
             </figure>
@@ -273,20 +197,6 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
             </div>
         </main>
 
-        <footer>
-            <a href="#" title="mergi sus" id="link-top"><div id="cerc"></div><div id="sageata">&#8593;</div></a>
-            <!--
-            <a href="fisier.pdf" download> Fisier descarcabil </a>
-            -->
-            <address>
-                Bulevardul Regina Elisabeta 3, București, Sector 1, România <br/>
-                <iframe id="locatie" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.8843011393164!2d26.097011776865713!3d44.43553547107576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFacultatea%20de%20Matematic%C4%83%20%C8%99i%20Informatic%C4%83!5e0!3m2!1sro!2sro!4v1709540026305!5m2!1sro!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                <br>
-                <a href="mailto:georgian.sofronea@gmail.com">Mail</a> <br/>
-                <i class="fa-solid fa-phone"></i> <a href="tel:+40712345678">Telefon</a> <br/>
-                <a href="https://wa.me/40712345678?text=I'm%20interested%20in%20your%20offer">Whatsapp</a>
-            </address>
-            <p><small>Copyright &copy; <time datetime="2024-03-04">4 martie 2024</time></small></p>
-        </footer>
+        <%- include("../fragmente/footer.ejs") %>
     </body>
 </html>

@@ -4,12 +4,16 @@
   "description": "[RO]<br/>\r PC Fabric este un site web al unui magazin de piese PC. Acesta va permite afisarea / filtrarea / sortarea dupa mai multe criterii a produselor, adaugarea lor in cos si verificarea compatibilitatii pieselor selectate ( doar a celor pentru care se selecteaza asamblare componenta, pentru a permite cumpararea unor piese independente care sa nu fie neaparat compatibile ( ex. cineva cumpara si pentru altcineva ). <br/>",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass -w resurse/sass/ -o resurse/css/"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Georgian Sofronea",
+  "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.9",
-    "express": "^4.18.3"
+    "express": "^4.18.3",
+    "gulp": "^4.0.2",
+    "node-sass": "^9.0.0",
+    "sass": "^1.72.0"
   }
 }

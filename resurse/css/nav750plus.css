@@ -1,0 +1,126 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header styles */
+header {
+  background-color: var(--culoare-2); /* Change this to your desired background color */
+  color: #fff; /* Change this to your desired text color */
+  padding: 10px;
+}
+
+#header-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#header-name h1 {
+  text-wrap: nowrap;
+  font-size: 3rem;
+  font-weight: bolder;
+}
+
+#header-name {
+  padding-right: 4rem;
+  transition: all 0.5s linear;
+}
+
+#header-nav {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.meniu {
+  list-style-type: none;
+  display: flex;
+  margin-left: 2rem;
+}
+
+.meniu li {
+  position: relative;
+  margin-right: 20px;
+}
+
+.meniu li:last-child {
+  margin-right: 0;
+}
+
+.meniu li a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  padding: 10px;
+}
+  
+.submeniu {
+  position: relative;
+}
+
+.submeniu a {
+  position: relative;
+  z-index: 3;
+}
+
+
+.submeniu div {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--culoare-2); /* Change this to your desired background color */
+  padding: 5px;
+  transform: scale(0, 0);
+  transform-origin: top left;
+  transition: transform 0.5s linear, background-color 0.5s linear;
+}
+
+.submeniu:hover div {
+  transform: scale(1, 1);
+  background-color:white;
+}
+
+.submeniu:hover div ul li a {
+  text-shadow: 0 0 15px black;
+}
+
+.submeniu div ul {
+  list-style-type: none;
+}
+
+.submeniu div ul li {
+  margin-bottom: 5px;
+}
+
+.hamburger-line {
+  background-color: #fff; /* Change this to your desired color */
+  margin: 5px 0;
+  display: none;
+}
+
+.submeniu::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 1;
+  border-radius: 40%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s linear, height 0.5s linear, opacity 0.5s linear, background-color 0.5s linear, border-radius 0.5s linear;
+}
+
+.submeniu:hover::after {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 30%;
+  border-radius: 0%;
+}

@@ -1,0 +1,96 @@
+@mixin meniu_pad {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.meniu {
+    display: flex;
+    flex-direction: row;
+    @include meniu_pad;
+    ul {
+        @include meniu_pad;
+        display: none;
+    }
+    a {
+        margin-left: 1rem;
+        padding:0.1rem;
+    }
+    li {
+        text-align: center;
+        box-sizing: border-box;
+        div, a {
+            box-sizing: border-box;
+        }
+        &:hover {
+            ul {
+                display: block;
+                position: absolute;
+                z-index: 3;
+            }
+        }
+    }
+    &>li>a {
+        border: 1px solid var(--culoare-5);
+        color: white;
+    }
+}
+
+.meniu_container {
+    position: relative;
+    &>li {
+        &>a {
+            color: white;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255,255,255,0);
+            z-index: 2; 
+            transition: all 1s linear;
+        }
+        &:hover::after {
+            width: calc(100% - 1rem);
+            height: calc(100% + 1px);
+            background-color: rgba(255,255,255,80);
+            opacity: 30%;
+            transform: translate(-38%, -56%);
+        }
+        &>ul {
+            width: 0%;
+            height: 0%;
+            transition: width 1s linear, height 1s linear;
+            &>li {
+                position: relative;
+                /*top: 100%;*/
+                left: 1rem;
+                width: calc(100% - 1rem);
+                background-color: var(--culoare-5);
+
+                &>a {
+                    position: relative;
+                    left: -0.5rem;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+  
+#meniu_home {
+    position: relative;
+    z-index: 1; /* Make sure the original element is below the ::after pseudo-element */
+    &>a>img {
+        width: 1rem;
+        transform: translateY(25%);
+    }
+}
+
+#hamburger {
+    display: none;
+}

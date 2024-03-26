@@ -1,0 +1,120 @@
+html {
+    --culoare-1:#EDE9E1;
+    --culoare-2:#6881AD;
+    --culoare-3:#E2E6ED;
+    --culoare-4:#98804F;
+    --culoare-5:#26416E;
+    --culoare-6: #43310C;
+    --culoare-fundal: var(--culoare-1);
+    --culoare-border: var(--culoare-6);
+    --culoare-text: black;
+    --culoare-highlight:var(--culoare-2);
+    --dimensiune-border: 1px;
+    --dimensiune-spatiere: 50px;
+    --dimensiune-spatiere-ecran-mediu: 25px;
+    --dimensiune-spatiere-ecran-mic: 10px;
+    --header-footer-border-radius: 15%;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: "Madimi One", sans-serif;
+    font-style: normal;
+}
+
+#header-name {
+    color: var(--culoare-3)
+}
+
+body {
+    background-color: var(--culoare-3);
+}
+
+main {
+    padding-left: var(--dimensiune-spatiere);
+    padding-right: var(--dimensiune-spatiere);
+    background-color: var(--culoare-3);
+}
+
+p {
+    color: #000000;
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+header {
+    background-color: var(--culoare-2);
+    border-bottom-right-radius: var(--header-footer-border-radius);
+    border-bottom-left-radius: var(--header-footer-border-radius);
+}
+
+footer {
+    background-color: var(--culoare-2);
+    border-top-right-radius: var(--header-footer-border-radius);
+    border-top-left-radius: var(--header-footer-border-radius);
+}
+
+#math-extra {
+    color:red;
+    font-weight: bold;
+}
+
+h2 {
+    font-size:1.5rem;
+    font-weight: bold;
+}
+
+h3 {
+    font-size:1.25rem;
+    font-weight: bold;
+}
+
+#tab-orar>tbody>tr:nth-child(even) {
+    background-color: var(--culoare-4);
+}
+
+#tab-orar>tbody>tr:nth-child(odd) {
+    background-color: var(--culoare-3);
+}
+
+#tab-orar>tbody>tr {
+    transition: background-color 1s linear;
+}
+
+#tab-orar>tbody>tr:hover {
+    background-color: var(--culoare-2);
+}
+
+.taburi-iframe>a {
+    background-color: white;
+    box-shadow: inset 0px 0px 20px #03855e,
+                inset 0px 10px 10px rgba(0, 0, 0, 1);
+    text-shadow: 
+        -1px -1px 0 #fff,  
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff; 
+         
+    color: #03855e;
+
+    border-bottom-left-radius: 20%;
+    border-bottom-right-radius: 20%;
+    border: 2px solid white;
+    outline: 1px solid #03855e; 
+}
+
+.container-iframe>iframe {
+    border: 5px solid #03855e;
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        padding-left: var(--dimensiune-spatiere-ecran-mediu);
+        padding-right: var(--dimensiune-spatiere-ecran-mediu)
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        padding-left: var(--dimensiune-spatiere-ecran-mic);
+        padding-right: var(--dimensiune-spatiere-ecran-mic)
+    }
+}
