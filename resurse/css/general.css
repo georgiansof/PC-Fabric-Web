@@ -2,6 +2,10 @@
   --anim-duration: 700ms;
 }
 
+#watermark {
+  display: none;
+}
+
 #link-top {
   position: fixed;
   bottom: 0.3em;

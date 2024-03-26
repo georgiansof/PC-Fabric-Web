@@ -124,3 +124,11 @@ header {
   opacity: 30%;
   border-radius: 0%;
 }
+
+#hamburger-check {
+  display: none;
+}
+
+#meniu-mobil {
+  display:none;
+}
