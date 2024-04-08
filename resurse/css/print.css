@@ -65,11 +65,16 @@
     }
 
     #watermark {
-        display: absolute;
-        width: 60%;
-        height: 10%;
-        color: rgba(0,0,0,77);
-        background-color: red;
+        display:block;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        color: rgba(77,77,77,255);
+        background-color: aqua;
+        opacity: 30%;
+        z-index: 5;
+        text-align: center;
+        text-decoration-color:( black / 50%);
     }
 
     #meniu {
@@ -77,13 +82,6 @@
         break-after: auto;
       }
 
-    #watermark {
-        display: contents;
-        width: 60%;
-        height: 10%;
-        text-align: center;
-        text-decoration-color:( black / 50%);
-    }
 
     @page:right{
         margin: 1cm 2cm;

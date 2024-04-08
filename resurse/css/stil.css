@@ -5,6 +5,7 @@ html {
   --culoare-4: #98804F;
   --culoare-5: #26416E;
   --culoare-6: #43310C;
+  --culoare-link-vizitat: red;
   --culoare-fundal: var(--culoare-1);
   --culoare-border: var(--culoare-6);
   --culoare-text: black;
@@ -96,6 +97,26 @@ h3 {
 
 .container-iframe > iframe {
   border: 5px solid #03855e;
+}
+
+a:visited {
+  color: var(--culoare-link-vizitat);
+}
+
+a[href^="http://"]::before {
+  content: "⮳";
+  font-size: 1.5em;
+  color: black;
+}
+
+a[href^="http://"]:hover::before {
+  color: red;
+}
+
+main a {
+  display: inline-block;
+  background: radial-gradient(ellipse at center, lightblue 0%, lightblue 40%, rgba(255, 0, 0, 0) 80%, rgba(255, 0, 0, 0) 100%);
+  transition: width 1s linear, height 1s linear;
 }
 
 @media screen and (max-width: 1000px) {
