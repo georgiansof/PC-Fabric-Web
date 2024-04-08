@@ -115,8 +115,15 @@ a[href^="http://"]:hover::before {
 
 main a {
   display: inline-block;
+  height: 1rem;
+  width: 0;
   background: radial-gradient(ellipse at center, lightblue 0%, lightblue 40%, rgba(255, 0, 0, 0) 80%, rgba(255, 0, 0, 0) 100%);
-  transition: width 1s linear, height 1s linear;
+  transition: width 1s linear;
+  text-wrap: nowrap;
+}
+
+main a:hover {
+  width: unset; /** TOFIX: nu functioneaza tranzitia, trebuie alta metoda **/
 }
 
 @media screen and (max-width: 1000px) {

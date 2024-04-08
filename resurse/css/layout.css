@@ -92,6 +92,13 @@ html {
   margin-bottom: 0.4rem;
 }
 
+#video-local {
+  width: 30%;
+  height: 30%;
+  max-width: 700px;
+  max-height: 350px;
+}
+
 @media screen and (max-width: 1000px) {
   #grid-pagina {
     grid-template-columns: repeat(2, 1fr);
