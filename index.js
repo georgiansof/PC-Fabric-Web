@@ -2,14 +2,34 @@ const express = require("express");
 const fs = require('fs');
 const path = require('path');
 // const sharp=require('sharp');
-// const sass=require('sass');
+const sass = require('sass');
 // const ejs=require('ejs');
+const pg = require('pg');
+const Client = pg.Client;
+
+var client = new Client({database: 'pcfabric',
+    user:'georgiansof',
+    password:'georgiansof',
+    host: 'localhost',
+    port: '5432'});
+client.connect();
+
+client.query('select * from prajituri', (err, rez) => {
+    if(err) {
+        console.log(err);
+        return;
+    }
+    console.log(rez);
+});
+
 
 obGlobal = {
-    obErori:null
+    obErori:null,
+    folderScss: path.join(__dirname, 'resurse', 'scss'),
+    folderCss: path.join(__dirname, 'resurse','css')
 }
 
-vect_foldere = ['temp', 'temp1']
+vect_foldere = ['temp', 'temp1', path.join('resurse', 'css', 'backup')]
 for (let folder of vect_foldere) {
     let caleFolder = path.join(__dirname, folder)
     if(!fs.existsSync(caleFolder)) {
@@ -58,6 +78,37 @@ app.get("/favicon.ico", (req, res) => {
     res.sendFile(path.join(__dirname, "/resurse/favicon/favicon.ico"));
 
 });
+
+
+/************************ PRODUSE ******************************** */
+
+app.get('/produse', (req, res) => {
+    client.query('select * from prajituri', (err, rez) => {
+        if(err) {
+            console.log(err);
+            afisareEroare(res, 2);
+            return;
+        }
+
+        res.render('pagini/produse', {produse: rez.rows, optiuni: []});
+    })
+});
+
+app.get('/produse/:id', (req, res) => {
+    client.query(`select * from prajituri where id=${req.params.id}`, (err, rez) => {
+        if(err) {
+            console.log(err);
+            afisareEroare(res, 2);
+            return;
+        }
+
+        res.render('pagini/produs', {prod: rez.rows[0]});
+    })
+});
+
+
+
+
 
 app.get('/*', (req, res) => {
     try {
@@ -125,6 +176,52 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
     }
 }
 
+function isAbsolutePath(path) {
+    // Regular expression to match absolute paths
+    var absolutePathRegex = /^(?:\/|[a-zA-Z]:\\)/;
+  
+    return absolutePathRegex.test(path);
+}
+
+function getFilesWithExtension(folderPath, extension) {
+    // Read the contents of the folder
+    const files = fs.readdirSync(folderPath);
+    
+    // Filter the files based on the extension
+    const filesWithExtension = files.filter(file => path.extname(file) === extension);
+
+    return filesWithExtension;
+}
+
+function compileazaScss(caleScss, caleCss) {
+    if(!isAbsolutePath(caleScss))
+        caleScss = path.join(obGlobal.folderScss, caleScss);
+    if(caleCss == null || caleCss === '')
+        caleCss = path.join(obGlobal.folderCss, path.parse(caleScss).name + '.css');
+    
+    if(fs.existsSync(caleCss)) 
+        fs.copyFileSync(caleCss, path.join(path.dirname(caleCss), 'backup', path.parse(caleCss).name + '.bk'));
+
+    const result = sass.renderSync({
+        file: caleScss
+    });
+
+    // Write the compiled CSS to the output file
+    fs.writeFileSync(caleCss, result.css);
+}
+
 initErori();
+
+scssToCompile = getFilesWithExtension(obGlobal.folderScss, '.scss')
+for(scssFile of scssToCompile)
+    compileazaScss(scssFile);
+
+fs.watch(obGlobal.folderScss, { recursive: true }, (eventType, filename) => {
+    if (filename && path.extname(filename) === '.scss') {
+        compileazaScss(filename);
+        console.log('Fisierul ' + filename + ' a fost recompilat !');
+    }
+});
+
 app.listen(8080);
 console.log("Serverul a pornit");

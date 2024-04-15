@@ -19,6 +19,12 @@ html {
   padding-left: 2rem;
 }
 
+#header-name {
+  font-size: 4rem;
+  font-weight: bolder;
+  padding-right: 4rem;
+}
+
 #grid-pagina {
   display: grid;
   gap: var(--gridgapsize);
@@ -84,6 +90,13 @@ html {
 .taburi-iframe > a {
   padding: 0.6rem;
   margin-bottom: 0.4rem;
+}
+
+#video-local {
+  width: 30%;
+  height: 30%;
+  max-width: 700px;
+  max-height: 350px;
 }
 
 @media screen and (max-width: 1000px) {
