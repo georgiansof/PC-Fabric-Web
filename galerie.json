@@ -1,0 +1,398 @@
+{
+    "cale_galerie": "/resurse/imagini/galerie/anotimpuri",
+    "imagini": 
+    [
+        {
+            "cale_fisier": "spring(1)",
+            "extensie": "jpg",
+            "titlu": "Flori primavara",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(2)",
+            "extensie": "jpg",
+            "titlu": "Flori si cer",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(3)",
+            "extensie": "jpg",
+            "titlu": "Lalele",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(4)",
+            "extensie": "jpg",
+            "titlu": "Cires",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(5)",
+            "extensie": "jpg",
+            "titlu": "Cires cu trunchi",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(6)",
+            "extensie": "jpg",
+            "titlu": "Iarba insorita",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(7)",
+            "extensie": "jpg",
+            "titlu": "Flori roz",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(8)",
+            "extensie": "jpg",
+            "titlu": "Copac cu cer",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(9)",
+            "extensie": "jpg",
+            "titlu": "Flori roz pe fundal alb",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(10)",
+            "extensie": "jpg",
+            "titlu": "Cer cu nori si flori albe",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(11)",
+            "extensie": "jpg",
+            "titlu": "planta",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(12)",
+            "extensie": "jpg",
+            "titlu": "Ghiocei",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(13)",
+            "extensie": "jpg",
+            "titlu": "Frunze verzi",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "spring(14)",
+            "extensie": "jpg",
+            "titlu": "Copac frumos",
+            "text_descriere": "O imagine de primavara",
+            "anotimp": "primavara"
+        },
+        {
+            "cale_fisier": "summer(1)",
+            "extensie": "jpg",
+            "titlu": "Palmier",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(2)",
+            "extensie": "jpg",
+            "titlu": "Flamingo gonflabil",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(3)",
+            "extensie": "jpg",
+            "titlu": "Marea",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(4)",
+            "extensie": "jpg",
+            "titlu": "Femeie la piscina",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(5)",
+            "extensie": "jpg",
+            "titlu": "Cocktail cu pepene",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(6)",
+            "extensie": "jpg",
+            "titlu": "Palmieri de jos",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(7)",
+            "extensie": "jpg",
+            "titlu": "Drum spre apa",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(8)",
+            "extensie": "jpg",
+            "titlu": "Palmier in soare",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(9)",
+            "extensie": "jpg",
+            "titlu": "Apa la mal",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(10)",
+            "extensie": "jpg",
+            "titlu": "Mal cu apa albastra",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(11)",
+            "extensie": "jpg",
+            "titlu": "Ochelari de soare",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(12)",
+            "extensie": "jpg",
+            "titlu": "Minge in apa",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(13)",
+            "extensie": "jpg",
+            "titlu": "Sezlong",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "summer(14)",
+            "extensie": "jpg",
+            "titlu": "Frunze plaja",
+            "text_descriere": "O imagine de vara",
+            "anotimp": "vara"
+        },
+        {
+            "cale_fisier": "autumn(1)",
+            "extensie": "jpg",
+            "titlu": "Frunze de toamna",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(2)",
+            "extensie": "jpg",
+            "titlu": "Cale ferata in frunze",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(3)",
+            "extensie": "jpg",
+            "titlu": "Copac ruginiu",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(4)",
+            "extensie": "jpg",
+            "titlu": "Padure mixta",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(5)",
+            "extensie": "jpg",
+            "titlu": "Alee cu frunze cazute",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(6)",
+            "extensie": "jpg",
+            "titlu": "Raze de soare printre copaci",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(7)",
+            "extensie": "jpg",
+            "titlu": "Frunze colorate",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(8)",
+            "extensie": "jpg",
+            "titlu": "Copac ruginiu",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(9)",
+            "extensie": "jpg",
+            "titlu": "Padure la munte",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(10)",
+            "extensie": "jpg",
+            "titlu": "Frunze in cadere",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(11)",
+            "extensie": "jpg",
+            "titlu": "Apus in padure",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(12)",
+            "extensie": "jpg",
+            "titlu": "Banca la mal",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(13)",
+            "extensie": "jpg",
+            "titlu": "Drum prin padure",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "autumn(14)",
+            "extensie": "jpg",
+            "titlu": "Frunze ruginii",
+            "text_descriere": "O imagine de toamna",
+            "anotimp": "toamna"
+        },
+        {
+            "cale_fisier": "winter(1)",
+            "extensie": "jpg",
+            "titlu": "Gheata",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(2)",
+            "extensie": "jpg",
+            "titlu": "Glob de gheata",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(3)",
+            "extensie": "jpg",
+            "titlu": "Brazi cu zapada",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(4)",
+            "extensie": "jpg",
+            "titlu": "Zapada in padure",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(5)",
+            "extensie": "jpg",
+            "titlu": "Cafenea iarna",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(6)",
+            "extensie": "jpg",
+            "titlu": "Intuneric in zapada",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(7)",
+            "extensie": "jpg",
+            "titlu": "Stea cazatoare",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(8)",
+            "extensie": "jpg",
+            "titlu": "Fructe inghetate",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(9)",
+            "extensie": "jpg",
+            "titlu": "Lac glaciar",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(10)",
+            "extensie": "jpg",
+            "titlu": "Bautura calda",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(11)",
+            "extensie": "jpg",
+            "titlu": "Brad albit",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(12)",
+            "extensie": "jpg",
+            "titlu": "Pasare in copac",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(13)",
+            "extensie": "jpg",
+            "titlu": "Apus de iarna",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        },
+        {
+            "cale_fisier": "winter(14)",
+            "extensie": "jpg",
+            "titlu": "Cabana langa lac",
+            "text_descriere": "O imagine de iarna",
+            "anotimp": "iarna"
+        }
+    ]
+}

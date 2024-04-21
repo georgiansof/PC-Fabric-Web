@@ -1,7 +1,7 @@
 const express = require("express");
 const fs = require('fs');
 const path = require('path');
-// const sharp=require('sharp');
+const sharp = require('sharp');
 const sass = require('sass');
 // const ejs=require('ejs');
 const pg = require('pg');
@@ -61,8 +61,41 @@ app.get('/suma/:a/:b', function(req,res) {
 });
 
 app.get(['/','/home','/index'], (req, res) => {
-    res.render("pagini/index", {ip: req.ip});
+    let obiect_galerie = construiesteGalerie();
+    res.render("pagini/index", {ip: req.ip, ob_galerie: obiect_galerie});
 });
+
+app.get('/resurse/imagini/galerie/anotimpuri/:imageName', (req, res) => {
+    const { imageName } = req.params;
+    const imagePath = path.join(__dirname, 'resurse', 'imagini', 'galerie', 'anotimpuri', `${imageName}`);
+
+    if(fs.existsSync(imagePath)) {
+        return res.sendFile(imagePath);
+    }
+
+    let size = 200;
+    let originalImagePath = imagePath.replace(/-mic/, '');
+
+    if(originalImagePath == imagePath) /// este mediu
+        size = 300;
+    originalImagePath = originalImagePath.replace(/-mediu/, '');
+
+    if (fs.existsSync(originalImagePath)) {
+        sharp(originalImagePath)
+            .resize(size, size) // Resize to desired dimensions
+            .toFile(imagePath, (err, info) => {
+                if (err) {
+                    console.error('Error resizing image:', err);
+                    afisareEroare(res, 500);
+                }
+                res.sendFile(imagePath);
+            });
+    } else {
+        //res.status(404).send('Image not found');
+        afisareEroare(res, 404);
+    }
+});
+
 
 app.get("/*.ejs", (req, res) => {
     afisareEroare(res, 400);
@@ -107,7 +140,10 @@ app.get('/produse/:id', (req, res) => {
 });
 
 
-
+app.get('/galerie_statica', (req, res) => {
+    let obiect_galerie = construiesteGalerie();
+    res.render('pagini/galerie_statica.ejs', {ob_galerie: obiect_galerie});
+});
 
 
 app.get('/*', (req, res) => {
@@ -137,6 +173,63 @@ app.get('/*', (req, res) => {
         }
     }
 });
+
+function getSeason(date) {
+    const month = date.getMonth() + 1;
+
+    if (month >= 3 && month <= 5) {
+        return "primavara";
+    } else if (month >= 6 && month <= 8) {
+        return "vara";
+    } else if (month >= 9 && month <= 11) {
+        return "toamna";
+    } else {
+        return "iarna";
+    }
+}
+
+function construiesteGalerie() {
+    let anotimp_acum = getSeason(new Date());
+    let jsonGalerie;
+    try {
+        let filedata = fs.readFileSync('galerie.json', 'utf8');
+        jsonGalerie = JSON.parse(filedata);
+    } catch(err) {
+        console.error("Error reading file:", err);
+    }
+    imagini_alese = []
+    nr_img = 0;
+    for(imagine of jsonGalerie.imagini)
+        if(imagine.anotimp == anotimp_acum && nr_img < 13) {
+            imagini_alese.push(imagine);
+            ++nr_img;
+        }
+    if(nr_img != 13)
+        throw "Prea putine imagini !";
+
+    let surse = []
+    let surse_medii = []
+    let surse_mici = []
+    let titluri = []
+    let descrieri = []
+
+    for(let i = 0; i < 13; ++i) {
+        surse.push(jsonGalerie.cale_galerie + "/" + imagini_alese[i].cale_fisier + "." + imagini_alese[i].extensie);
+        surse_mici.push(jsonGalerie.cale_galerie + "/" + imagini_alese[i].cale_fisier + "-mic" + "." + imagini_alese[i].extensie)
+        surse_medii.push(jsonGalerie.cale_galerie + "/" + imagini_alese[i].cale_fisier + "-mediu" + "." + imagini_alese[i].extensie)
+        titluri.push(imagini_alese[i].titlu);
+        descrieri.push(imagini_alese[i].text_descriere);
+    }
+
+    let obGalerie = {
+        sursa: surse,
+        sursa_mica: surse_mici,
+        sursa_medie: surse_medii,
+        titlu: titluri,
+        descriere: descrieri
+    }
+    return obGalerie;
+}
 
 function initErori() {
     let continut = fs.readFileSync(path.join(__dirname,"/resurse/json/erori.json"));

@@ -10,6 +10,7 @@
         <meta name="keywords" content="bucuresti, calculator, pc, procesor, placa grafica, intel, amd, nvidia, asamblare, cabluri, ssd, stocare, surse alimentare">
         <meta name="description" content="PC Fabric - Construiește-ți propriul PC după bunul plac, iar noi avem grijă ca piesele tale să fie compatibile.
             Serviciu de asamblare la cerere.">
+        <link rel="stylesheet" href="/resurse/css/galerie_statica.css">
     </head>
 
     <body>
@@ -203,11 +204,14 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
             <div class="container-iframe">
                 <iframe name="ifr-video" width="560" height="315" src="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div class="taburi-iframe">
-                    <a href="https://www.youtube.com/embed/N2nMiid0MbI?si=9aFjqQ9WF7obO8HA" target="ifr-video">PC BUILD 1</a>
-                    <a href="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" target="ifr-video">Cars</a>
-                    <a href="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" target="ifr-video">Cars, again</a>
+                    <a class="anch-iframe" href="https://www.youtube.com/embed/N2nMiid0MbI?si=9aFjqQ9WF7obO8HA" target="ifr-video">PC BUILD 1</a>
+                    <a class="anch-iframe" href="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" target="ifr-video">Cars</a>
+                    <a class="anch-iframe" href="https://www.youtube.com/embed/f8GEj8Yl0po?si=V_OOmZT2WGc5CEHD" target="ifr-video">Cars, again</a>
                 </div>
             </div>
+
+            <%- include("../fragmente/galerie_statica.ejs") %>
+
         </main>
 
         <%- include("../fragmente/footer.ejs") %>

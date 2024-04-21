@@ -113,7 +113,7 @@ html {
     color: red;
   }
   
-  main a {
+  main a:not(.anch-iframe) {
     display: inline-block;
     height: 1rem;
     width: 0;
@@ -122,8 +122,9 @@ html {
     text-wrap: nowrap;
   }
   
-  main a:hover {
-    width: unset; /** TOFIX: nu functioneaza tranzitia, trebuie alta metoda **/
+  main a:hover:not(.anch-iframe) {
+    width: unset;
+    /** TOFIX: nu functioneaza tranzitia, trebuie alta metoda **/
   }
   
   @media screen and (max-width: 1000px) {

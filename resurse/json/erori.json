@@ -50,6 +50,14 @@
             "titlu":"Date gresit",
             "text": "Verificati datele",
             "imagine":"interzis.png"
+        },
+
+        {
+            "identificator": 500,
+            "status": true,
+            "titlu":"Eroare interna",
+            "text": "Serverul a dat peste o eroare interna. Ne pare rau!",
+            "imagine":"lupa.png"
         }
     ]
 }

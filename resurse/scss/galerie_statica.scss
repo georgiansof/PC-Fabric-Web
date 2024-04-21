@@ -1,0 +1,93 @@
+html {
+    /* sau selectorul html */
+    --gridgapsize: 20px;
+    --gridgapsize-med: 10px;
+    --gridmargin-mic: 5px;
+    --table-spacing: 2px;
+}
+
+[id^="imagine_"] figure picture img {
+    display: block;
+    margin: auto;
+}
+
+#galerie_statica {
+    display: grid;
+    width: 100%;
+    gap: var(--gridgapsize);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "imagine_1 imagine_2 imagine_3" "imagine_4 gol_1 imagine_5" "imagine_6 imagine_7 imagine_8" "imagine_9 gol_2 imagine_10" "imagine_11 imagine_12 imagine_13";
+}
+
+#galerie_statica > * {
+    border: 2px solid var(--culoare-6);
+    padding: 1em;
+}
+  
+#galerie_statica > figure {
+    margin: 0;
+}
+
+body {
+    counter-reset: roman-counter;
+}
+
+[id^="imagine_"] figcaption {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.numerotare {
+    counter-increment: roman-counter;
+}
+
+.numerotare:before {
+    content: counter(roman-counter, upper-roman) ".";
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#galerie_statica img {
+    transition: all 0.125s linear;
+    transform-origin: top center;
+    opacity: 100%;
+}
+
+#galerie_statica img:hover {
+    transform: scale(1.4);
+    opacity: 50%;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 1500px) {
+    #galerie_statica {
+        gap: var(--gridgapsize-med);
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "imagine_1 imagine_2" "imagine_3 imagine_4" "imagine_5 imagine_6" "imagine_7 imagine_8" "imagine_9 imagine_10";
+        padding-top: 5px;
+    }
+    #gol_1 {
+        display: none;
+    }
+
+    #gol_2 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    #galerie_statica {
+        gap: 5px;
+        padding-top: 3px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: "imagine_1" "imagine_2" "imagine_3" "imagine_4" "imagine_5" "imagine_6" "imagine_7" "imagine_8" "imagine_9" "imagine_10";
+    }
+
+    #gol_1 {
+        display: none;
+    }
+
+    #gol_2 {
+        display: none;
+    }
+}
