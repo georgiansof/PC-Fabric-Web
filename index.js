@@ -286,6 +286,20 @@ function getFilesWithExtension(folderPath, extension) {
     return filesWithExtension;
 }
 
+function formatCurrentDate() {
+    var d = new Date(),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 function compileazaScss(caleScss, caleCss) {
     if(!isAbsolutePath(caleScss))
         caleScss = path.join(obGlobal.folderScss, caleScss);
@@ -293,7 +307,7 @@ function compileazaScss(caleScss, caleCss) {
         caleCss = path.join(obGlobal.folderCss, path.parse(caleScss).name + '.css');
     
     if(fs.existsSync(caleCss)) 
-        fs.copyFileSync(caleCss, path.join(path.dirname(caleCss), 'backup', path.parse(caleCss).name + '.bk'));
+        fs.copyFileSync(caleCss, path.join(path.dirname(caleCss), 'backup', path.parse(caleCss).name + '-' + formatCurrentDate() + '.bk'));
 
     const result = sass.renderSync({
         file: caleScss
@@ -311,8 +325,13 @@ for(scssFile of scssToCompile)
 
 fs.watch(obGlobal.folderScss, { recursive: true }, (eventType, filename) => {
     if (filename && path.extname(filename) === '.scss') {
-        compileazaScss(filename);
-        console.log('Fisierul ' + filename + ' a fost recompilat !');
+        try {
+            compileazaScss(filename);
+            console.log('Fisierul ' + filename + ' a fost recompilat !');
+        }
+        catch(e) {
+            console.log('Fisierul ' + filename + ' contine erori de sintaxa !');
+        }
     }
 });
 

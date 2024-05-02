@@ -201,76 +201,12 @@ footer adress span {
   * {
   outline: 1px solid #f00 !important;
 }*/
-@keyframes wave {
-  0% {
-    background: -webkit-repeating-linear-gradient(top, #333 50%, #eee 70%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  10% {
-    background: -webkit-repeating-linear-gradient(top, #333 45%, #eee 65%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  20% {
-    background: -webkit-repeating-linear-gradient(top, #333 40%, #eee 60%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  30% {
-    background: -webkit-repeating-linear-gradient(top, #333 35%, #eee 55%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  40% {
-    background: -webkit-repeating-linear-gradient(top, #333 30%, #eee 50%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  50% {
-    background: -webkit-repeating-linear-gradient(top, #333 25%, #eee 45%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  60% {
-    background: -webkit-repeating-linear-gradient(top, #333 20%, #eee 40%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  70% {
-    background: -webkit-repeating-linear-gradient(top, #333 15%, #eee 35%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  80% {
-    background: -webkit-repeating-linear-gradient(top, #333 10%, #eee 30%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  90% {
-    background: -webkit-repeating-linear-gradient(top, #333 5%, #eee 25%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  100% {
-    background: -webkit-repeating-linear-gradient(top, #333 0%, #eee 20%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
 #reflexie-text {
   position: absolute;
   transform-origin: 0 0;
   /*conetaza ordinea transformarilor!*/
   transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px, -25px);
   opacity: 0.55;
-  background: -webkit-repeating-linear-gradient(top, #eee 0%, #333 20%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-#text-reflectat:hover + #reflexie-text, #reflexie-text:hover {
-  animation: wave 2s linear infinite;
 }
 
 #text-reflectat {

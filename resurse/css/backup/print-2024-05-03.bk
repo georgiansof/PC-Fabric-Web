@@ -1,0 +1,75 @@
+@media print {
+  /* All your print styles go here */
+  #header #footer {
+    break-before: page;
+  }
+  #nav {
+    display: none !important;
+  }
+  #banner {
+    position: fixed;
+    top: 0.3em;
+    right: 0.3em;
+    width: 70%;
+    border-style: double;
+    border: solid 3px black;
+    box-sizing: content-box;
+    width: 50%;
+  }
+  #link-top {
+    display: none;
+  }
+  img {
+    display: none !important;
+  }
+  iframe {
+    display: none !important;
+  }
+  #grid-pagina {
+    display: block;
+  }
+  figcaption {
+    display: none !important;
+  }
+  figure {
+    display: none;
+  }
+  .taburi-iframe, .container-iframe {
+    display: none;
+  }
+  #link-top {
+    display: none !important;
+  }
+  #grid-pagina {
+    display: block;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  .header-name {
+    position: fixed;
+    align-self: center;
+  }
+  #watermark {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    color: rgb(77, 77, 77);
+    background-color: aqua;
+    opacity: 30%;
+    z-index: 5;
+    text-align: center;
+  }
+  #meniu {
+    text-decoration: none;
+    break-after: auto;
+  }
+  @page :right {
+    margin: 1cm 2cm;
+  }
+  @page :left {
+    margin: 2cm 1cm;
+  }
+}

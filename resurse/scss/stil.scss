@@ -126,6 +126,169 @@ html {
     width: unset;
     /** TOFIX: nu functioneaza tranzitia, trebuie alta metoda **/
   }
+
+footer adress span{
+  /*margin-left: 25px;*/
+}
+
+#imagine_duotone {
+	position:relative;
+	background-image:url("http://irinaciocan.ro/imagini/plante.jpg");
+	background-size:cover;
+	width:500px; 
+	height: 500px;
+	filter:brightness(200%) grayscale(0) ;
+	transition:all 2s linear;
+}
+
+#imagine_duotone:after, #imagine_duotone:before {
+	content:" ";
+	position:absolute;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	transition:all 2s linear;
+}
+
+#imagine_duotone:after {
+	background-color:rgb(0,0,255);
+	mix-blend-mode:lighten;
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+#imagine_duotone:before {
+	background-color:rgb(205,0,255);
+	mix-blend-mode:darken;
+  transform-origin: right center;
+  transform: scaleX(0);
+}
+
+#imagine_duotone:hover:after, #imagine_duotone:hover:before {
+  transform: scaleX(1);
+}
+
+.gradient-hr {
+  height: 4px; /* Adjust height as needed */
+  border: none;
+  position: relative;
+  background-color: var(--culoare-5);
+}
+
+.gradient-hr::before,
+.gradient-hr::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px; 
+  background-image: linear-gradient(to right, var(--culoare-5) 50%, transparent 50%);
+  background-size: 10px 100%; 
+  background-repeat: repeat-x;
+}
+
+.gradient-hr::before {
+  top: -4px; 
+  left: 3px;
+}
+
+.gradient-hr::after {
+  bottom: -4px; /* Adjust the position of the bottom dashed line */
+}
+
+/*
+  * {
+  outline: 1px solid #f00 !important;
+}*/
+
+@keyframes wave {
+  0% {
+    background: -webkit-repeating-linear-gradient(top, #333 50%, #eee 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  10% {
+    background: -webkit-repeating-linear-gradient(top, #333 45%, #eee 65%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  20% {
+    background: -webkit-repeating-linear-gradient(top, #333 40%, #eee 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  30% {
+    background: -webkit-repeating-linear-gradient(top, #333 35%, #eee 55%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  40% {
+    background: -webkit-repeating-linear-gradient(top, #333 30%, #eee 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  50% {
+    background: -webkit-repeating-linear-gradient(top, #333 25%, #eee 45%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  60% {
+    background: -webkit-repeating-linear-gradient(top, #333 20%, #eee 40%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  70% {
+    background: -webkit-repeating-linear-gradient(top, #333 15%, #eee 35%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  80% {
+    background: -webkit-repeating-linear-gradient(top, #333 10%, #eee 30%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  90% {
+    background: -webkit-repeating-linear-gradient(top, #333 5%, #eee 25%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  100% {
+    background: -webkit-repeating-linear-gradient(top, #333 0%, #eee 20%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+
+
+#reflexie-text{
+  position:absolute;
+  //left:0;
+  //top:100%;
+  transform-origin:0 0;
+  /*conetaza ordinea transformarilor!*/
+  transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px,-25px); 
+  opacity:0.55;
+
+  background: -webkit-repeating-linear-gradient(top, #eee 0%, #333 20%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#text-reflectat:hover+#reflexie-text, #reflexie-text:hover {
+  animation: wave 2s linear infinite;
+}
+
+#text-reflectat{	
+  position: relative;
+}
+
+#text-reflectat, #reflexie-text{
+  font-size:50px;
+  line-height:50px;
+  font-weight: bold;
+}
+
   
   @media screen and (max-width: 1000px) {
     main {
