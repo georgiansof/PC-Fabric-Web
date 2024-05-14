@@ -1,0 +1,15 @@
+{
+    "brand": ["AMD", "Intel"],
+    "generatie": "tbd", 
+    "numar_nuclee": "numeric",
+    "numar_threaduri": "numeric",
+    "eficienta": ["performant", "eficient", "hibrid"],
+    "tehnologie_fabricatie_nm": "numeric",
+    "putere": "numeric",
+    "frecventa_maxima": "numeric",
+    "deblocat_oc": "boolean",
+    "procesor_grafic": "boolean",
+    "soclu_procesor": "tbd",
+    "memorie": ["DDR4", "DDR5"],
+    "pret": "numeric"
+}

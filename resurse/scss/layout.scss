@@ -100,6 +100,10 @@ html {
     max-height: 350px;
   }
   
+  footer {
+    margin-top: 20px;
+  }
+
   @media screen and (max-width: 1000px) {
     #grid-pagina {
       grid-template-columns: repeat(2, 1fr);

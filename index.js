@@ -145,6 +145,17 @@ app.get('/galerie_statica', (req, res) => {
     res.render('pagini/galerie_statica.ejs', {ob_galerie: obiect_galerie});
 });
 
+app.get('/procesoare', (req, res) => {
+    let json = JSON.parse(fs.readFileSync("resurse/json/filtre/procesoare.json"));
+    client.query('select * from procesoare', (err, procesoare) => {
+        if(err) {
+            console.log(err);
+            afisareEroare(res, 2);
+            return;
+        }
+        res.render('pagini/procesoare.ejs', {json_filtre: json, items: procesoare['rows']});
+    })
+});
 
 app.get('/*', (req, res) => {
     try {
@@ -307,7 +318,7 @@ function compileazaScss(caleScss, caleCss) {
         caleCss = path.join(obGlobal.folderCss, path.parse(caleScss).name + '.css');
     
     if(fs.existsSync(caleCss)) 
-        fs.copyFileSync(caleCss, path.join(path.dirname(caleCss), 'backup', path.parse(caleCss).name + '-' + formatCurrentDate() + '.bk'));
+        fs.copyFileSync(caleCss, path.join(path.dirname(caleCss), 'backup', path.parse(caleCss).name + '-' + formatCurrentDate() + '.bk.css'));
 
     const result = sass.renderSync({
         file: caleScss

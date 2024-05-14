@@ -1,0 +1,58 @@
+<%
+    const maxNumericValues = 10;
+    for(var key of Object.keys(json_filtre)) {
+        %>
+        <strong><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %></strong>
+        <%
+        if(key === "frecventa_maxima") {
+            %>
+                <strong>(MHz)</strong>
+            <%
+        }
+        if(key === "putere") {
+            %>
+                <strong>(W)</strong>
+            <%
+        }
+        if(Array.isArray(json_filtre[key])) {
+            json_filtre[key].forEach(element => {
+                %>
+                <label><input type="checkbox" name="<%= key %>" value="<%= element %>" checked><%= element %></label>
+                <%
+            });
+        }
+        else if(json_filtre[key] === "boolean") {
+            %>
+                <label><input type="radio" name="<%= key %>" value="true"> Da </label>
+                <label><input type="radio" name="<%= key %>" value="false"> Nu </label>
+                <label><input type="radio" name="<%= key %>" value="undefined" checked> Irelevant </label>
+            <%
+        }
+        else if(json_filtre[key] === "numeric" || json_filtre[key] === "tbd") {
+            var uniqueArray = items
+                                .map(obj => obj[key])
+                                .filter((value, index, array) => array.indexOf(value) === index)
+                                .sort((a,b) => a - b);
+
+            if(json_filtre[key] === "numeric" && uniqueArray.length > maxNumericValues) {/// transform in slider
+                %>
+                    <label>Minim:</label>
+                    <input class="numericInput" type="text" pattern="[0-9]*" name="<%= key %>_low" placeholder="valoare minima">
+                    <label>Maxim:</label>
+                    <input class="numericInput" type="text" pattern="[0-9]*" name="<%= key %>_high" placeholder="valoare maxima">
+                <% 
+            }
+            else {
+                for(var value of uniqueArray) {
+                    %>
+                    <label><input type="checkbox" name="<%= key %>" value="<%= value %>" checked><%= value %></label>
+                    <%
+                }
+            }
+        }
+        %>
+        <br>
+        <%
+    }
+%>
+<button id="buton_filtrare"> Filtreaza </button>

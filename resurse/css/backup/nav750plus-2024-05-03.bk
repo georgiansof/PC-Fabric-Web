@@ -41,6 +41,8 @@ header {
   list-style-type: none;
   display: flex;
   margin-left: 2rem;
+  z-index: 5;
+  text-wrap: nowrap;
 }
 
 .meniu li {
@@ -81,7 +83,15 @@ header {
 
 .submeniu:hover div {
   transform: scale(1, 1);
-  background-color: white;
+}
+
+.submeniu li {
+  width: 100%;
+  transition: background-color 1s linear;
+}
+
+.submeniu div li:hover {
+  background-color: var(--culoare-5);
 }
 
 .submeniu:hover div ul li a {

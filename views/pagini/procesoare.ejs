@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html  lang="ro">
+    <head>
+        <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
+        <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+        
+        <title>PC Fabric galerie_statica</title>
+        <%- include("../fragmente/head") %>     
+        <link rel="stylesheet" href="/resurse/css/galerie_statica.css">
+    </head>
+    <body>
+    <%- include("../fragmente/header") %>
+    <link rel="stylesheet" href="/resurse/css/items.css" type="text/css"/>
+
+    <main>
+        <%- include("../fragmente/filtrare", {json_filtre: json_filtre, items: items}) %>
+
+        <div class="container" id="productContainer">
+            <% items.forEach( (item) => { %>
+                <div class="product">
+                    <p>Procesor <%= item.brand %> <%= item.model %></p>
+                    <img src="<%= item.cale_imagine %>" alt="Product Photo">
+                    <ul>
+                        <li>Soclu: <%= item.soclu_procesor %></li>
+                        <li>Generatie: <%= item.generatie %></li>
+                        <li>Frecventa maxima: <%= item.frecventa_maxima / 1000 %> GHz</li>
+                        <li>Litografie: <%= item.tehnologie_fabricatie_nm %> nm</li>
+                        <li>Putere consumata: <%= item.putere %> W</li>
+                        
+                        <% if(item.pret_redus != null) { %>
+                        <li id="pret_normal"><s>Pret normal: <%= item.pret %> RON</s></li>
+                        <li id="pret_redus">Pret acum: <%= item.pret_redus %> RON</li>
+                        
+                        <% } else {%>
+                        <li id="filler_pret" style="color: rgba(0,0,0,0);">Pret intreg</li>
+                        <li id="pret_redus">Pret acum: <%= item.pret %> RON</li>
+                        <% }%>
+                        <button class="buy-button">Adauga in cos</button>
+                    </ul>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+
+    <%- include("../fragmente/footer") %>
+    <script>
+        const items = JSON.parse('<%- JSON.stringify(items) %>');
+        const json_filtre = JSON.parse('<%- JSON.stringify(json_filtre) %>');
+    </script>
+    <script src="/resurse/javascript/buton_filtrare.js"></script>
+    </body>
+</html>

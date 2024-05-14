@@ -27,11 +27,11 @@
     --light: #f8f9fa;
     --dark: #343a40;
     --breakpoint-xs: 0;
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --breakpoint-sm: 570px;
+    --breakpoint-md: 750px;
+    --breakpoint-lg: 1000px;
+    --breakpoint-xl: 1250px;
+    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Open Sans", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
   
@@ -58,7 +58,7 @@
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #212529;
+    color: #0e0f0f;
     text-align: left;
     background-color: #fff;
   }
@@ -153,13 +153,13 @@
   }
   
   a {
-    color: #007bff;
+    color: #26416E;
     text-decoration: none;
     background-color: transparent;
   }
   
   a:hover {
-    color: #0056b3;
+    color: #0257b3;
     text-decoration: underline;
   }
   
@@ -363,27 +363,27 @@
   }
   
   h1, .h1 {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
   }
   
   h2, .h2 {
-    font-size: 2rem;
+    font-size: 2.1rem;
   }
   
   h3, .h3 {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
   }
   
   h4, .h4 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   
   h5, .h5 {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
   
   h6, .h6 {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .lead {
@@ -431,7 +431,7 @@
   mark,
   .mark {
     padding: 0.2em;
-    background-color: #fcf8e3;
+    background-color: #98804F;
   }
   
   .list-unstyled {
@@ -2156,7 +2156,7 @@
     padding: 0.25rem 0.5rem;
     font-size: 0.875rem;
     line-height: 1.5;
-    border-radius: 0.2rem;
+    border-radius: 0.15rem;
   }
   
   .form-control-lg {
@@ -2558,8 +2558,8 @@
   
   .btn-primary {
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #6881AD;
+    border-color: #6881AD;
   }
   
   .btn-primary:hover {
@@ -6131,7 +6131,7 @@
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: -apple-system, BlinkMacSystemFont, "Comfortaa", "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;

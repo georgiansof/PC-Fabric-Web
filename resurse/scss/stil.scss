@@ -72,9 +72,6 @@ html {
     transition: background-color 1s linear;
   }
   
-  #tab-orar > tbody > tr:hover {
-    background-color: var(--culoare-2);
-  }
   
   #tab-orar > tbody > tr:nth-child(even) {
     background-color: var(--culoare-4);
@@ -83,24 +80,33 @@ html {
   #tab-orar > tbody > tr:nth-child(odd) {
     background-color: var(--culoare-3);
   }
+
+  #tab-orar > tbody > tr:hover {
+    background-color: var(--culoare-2);
+  }
   
   .taburi-iframe > a {
     background-color: white;
-    box-shadow: inset 0px 0px 20px #03855e, inset 0px 10px 10px black;
-    text-shadow: -1px -1px 0 #fff,   1px -1px 0 #fff, -1px  1px 0 #fff, 1px  1px 0 #fff;
+    box-shadow: inset 0px 0px 20px rgba(3, 133, 94, 1), inset 0px 10px 10px black;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px  1px 0 #fff, 1px  1px 0 #fff;
     color: #03855e;
     border-bottom-left-radius: 20%;
     border-bottom-right-radius: 20%;
     border: 2px solid white;
     outline: 1px solid #03855e;
-  }
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.taburi-iframe > a:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0px 0px 30px rgba(3, 133, 94, 0.4), inset 0px 15px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+
   
   .container-iframe > iframe {
     border: 5px solid #03855e;
-  }
-  
-  a:visited {
-    color: var(--culoare-link-vizitat);
   }
   
   a[href^="http://"]::before {
@@ -116,15 +122,16 @@ html {
   main a:not(.anch-iframe) {
     display: inline-block;
     height: 1rem;
-    width: 0;
     background: radial-gradient(ellipse at center, lightblue 0%, lightblue 40%, rgba(255, 0, 0, 0) 80%, rgba(255, 0, 0, 0) 100%);
-    transition: width 1s linear;
+    background-size: 0 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-size 1s linear;
     text-wrap: nowrap;
   }
   
   main a:hover:not(.anch-iframe) {
-    width: unset;
-    /** TOFIX: nu functioneaza tranzitia, trebuie alta metoda **/
+    background-size: 100% 100%;
   }
 
 footer adress span{
