@@ -1,0 +1,5 @@
+#container_filtrare_sortare {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

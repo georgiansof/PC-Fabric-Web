@@ -1,58 +1,140 @@
-<%
-    const maxNumericValues = 10;
-    for(var key of Object.keys(json_filtre)) {
-        %>
-        <strong><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %></strong>
-        <%
-        if(key === "frecventa_maxima") {
-            %>
-                <strong>(MHz)</strong>
-            <%
-        }
-        if(key === "putere") {
-            %>
-                <strong>(W)</strong>
-            <%
-        }
-        if(Array.isArray(json_filtre[key])) {
-            json_filtre[key].forEach(element => {
-                %>
-                <label><input type="checkbox" name="<%= key %>" value="<%= element %>" checked><%= element %></label>
-                <%
-            });
-        }
-        else if(json_filtre[key] === "boolean") {
-            %>
-                <label><input type="radio" name="<%= key %>" value="true"> Da </label>
-                <label><input type="radio" name="<%= key %>" value="false"> Nu </label>
-                <label><input type="radio" name="<%= key %>" value="undefined" checked> Irelevant </label>
-            <%
-        }
-        else if(json_filtre[key] === "numeric" || json_filtre[key] === "tbd") {
-            var uniqueArray = items
-                                .map(obj => obj[key])
-                                .filter((value, index, array) => array.indexOf(value) === index)
-                                .sort((a,b) => a - b);
-
-            if(json_filtre[key] === "numeric" && uniqueArray.length > maxNumericValues) {/// transform in slider
-                %>
-                    <label>Minim:</label>
-                    <input class="numericInput" type="text" pattern="[0-9]*" name="<%= key %>_low" placeholder="valoare minima">
-                    <label>Maxim:</label>
-                    <input class="numericInput" type="text" pattern="[0-9]*" name="<%= key %>_high" placeholder="valoare maxima">
-                <% 
-            }
-            else {
-                for(var value of uniqueArray) {
+<div id="container_filtrare_sortare">
+    <div id="container_filtre">
+    <%
+        const maxNumericValues = 10;
+        for(var key of Object.keys(json_filtre)) {
+            if(json_filtre[key] === "numeric") {
+                var uniqueArray = items
+                                    .map(obj => obj[key])
+                                    .filter((value, index, array) => array.indexOf(value) === index)
+                                    .sort((a,b) => a - b);
+                if(uniqueArray.length > maxNumericValues) {
                     %>
-                    <label><input type="checkbox" name="<%= key %>" value="<%= value %>" checked><%= value %></label>
+                    <div id="filtru-<%=key%>" class="d-inline-flex flex-column">
+                    <%
+                }
+                else {
+                    %>
+                    <div id="filtru-<%=key%>" class="d-inline-flex">
                     <%
                 }
             }
+            else {
+                %>
+                <div id="filtru-<%=key%>" class="d-inline-flex">
+                <%
+            }
+
+
+            %>
+            <strong><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %>
+            <%
+            if(key === "frecventa_maxima") {
+                %>
+                    (MHz)
+                <%
+            }
+            if(key === "putere") {
+                %>
+                    (W)
+                <%
+            }
+            %>
+            </strong>
+            <%
+            if(Array.isArray(json_filtre[key])) {
+                %>
+                <div class="d-inline-flex flex-row">
+                <%
+                json_filtre[key].forEach(element => {
+                    %>
+                    <div style="margin-left: 5px;" class="form-check">
+                        <input class="form-check-input" id="checkbox-<%= key %>-<%= element %>" type="checkbox" name="<%= key %>" value="<%= element %>" checked>
+                        <label class="form-check-label" for="checkbox-<%= key %>-<%= element %>"><%= element %></label>
+                    </div>
+                    <%
+                });
+                %>
+                </div>
+                <%
+            }
+            else if(json_filtre[key] === "boolean") {
+                %>
+                    <div style="margin-left: 10px;" class="btn-group btn-group-toggle" data-toggle="buttons">
+                        
+                        <label class="btn btn-outline-primary <%=key%>" for="radio-<%=key%>-da"><input id="radio-<%=key%>-da" class="form-check-input" type="radio" autocomplete="off" name="<%= key %>" value="true"> Da</label> 
+                        <label class="btn btn-outline-primary <%=key%>" for="radio-<%=key%>-nu"><input id="radio-<%=key%>-nu" class="form-check-input" type="radio" autocomplete="off" name="<%= key %>" value="false"> Nu</label>
+                        <label class="btn btn-primary selected <%=key%>" for="radio-<%=key%>-undef"><input id="radio-<%=key%>-undef" class="form-check-input" autocomplete="off" type="radio" name="<%= key %>" value="undefined" checked> Irelevant</label>
+                    </div>
+                <%
+            }
+            else if(json_filtre[key] === "numeric" || json_filtre[key] === "tbd") {
+                var uniqueArray = items
+                                    .map(obj => obj[key])
+                                    .filter((value, index, array) => array.indexOf(value) === index)
+                                    .sort((a,b) => a - b);
+
+                if(json_filtre[key] === "numeric" && uniqueArray.length > maxNumericValues) {/// transform in slider
+                    %>
+                    <div class="d-flex">
+                        <div class="form-floating flex-row">
+                            <input id="minim-<%=key%>" class="numericInput form-control form-control-sm" type="text" pattern="[0-9]*" name="<%= key %>_low" placeholder="valoare minima">
+                            <label class="small" for="minim-<%=key%>">Minim:</label>
+                        </div>
+                        <div class="form-floating flex-row">
+                            <input id="maxim-<%=key%>" class="numericInput form-control form-control-sm" type="text" pattern="[0-9]*" name="<%= key %>_high" placeholder="valoare maxima">
+                            <label class="small" for="maxim-<%=key%>">Maxim:</label>
+                        </div>
+                    </div>
+                        
+                    <% 
+                }
+                else {
+                    for(var value of uniqueArray) {
+                        %>
+                        <div style="margin-left: 5px;" class="form-check">
+                            <input class="form-check-input" id="checkbox-<%= key %>-<%= value %>" type="checkbox" name="<%= key %>" value="<%= value %>" checked>
+                            <label class="form-check-label" for="checkbox-<%= key %>-<%= value %>"><%= value %></label>
+                        </div>
+                        <%
+                    }
+                }
+            }
+            %>
+            </div>
+            <br>
+            <%
         }
-        %>
-        <br>
-        <%
-    }
-%>
-<button id="buton_filtrare"> Filtreaza </button>
+    %>
+    <button class="btn btn-primary d-inline-flex" id="buton_filtrare"><span class="bi bi-filter"></span><span class="d-none d-sm-block">Filtreaza</span></button>
+    </div>
+    <div id="container_sortare">
+        <select name="criteriu_sortare">
+            <%
+                for(var key of Object.keys(json_filtre)) {
+                    if(json_filtre[key] === "numeric") {
+                        if(key !== "pret") {
+                            %>
+                            <option value="<%= key %>"><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %></option>
+                            <%
+                        }
+                        else {
+                            %>
+                            <option value="<%= key %>" selected><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %></option>
+                            <%
+                        }
+                    }
+                }
+            %>
+        </select><br>
+        <div style="display: flex;" class="flex-row">
+            <div style="margin-left: 5px;" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-outline-primary buton-tip-sortare"><input class="form-check-input" type="radio" name="crescator" value="false" /> Descrescător</label>
+                <label class="btn btn-primary selected buton-tip-sortare"><input class="form-check-input" type="radio" name="crescator" value="true" checked /> Crescător</label>
+            </div>
+        </div>
+            
+        <button class="btn btn-primary d-inline-flex" id="buton_sortare"><span class="bi bi-sort-up"></span><span class="d-none d-sm-block">Sortează</span></button>
+        <button class="btn btn-primary d-inline-flex" id="buton_resetare"><span class="bi bi-arrow-clockwise"></span><span class="d-none d-sm-block">Resetează</span></button>    
+    </div><br>
+</div>

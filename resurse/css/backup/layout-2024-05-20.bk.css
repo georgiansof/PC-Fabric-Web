@@ -1,0 +1,136 @@
+html {
+  /* sau selectorul html */
+  --gridgapsize: 20px;
+  --gridgapsize-med: 10px;
+  --gridmargin-mic: 5px;
+  --table-spacing: 2px;
+}
+
+#header-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#header-nav {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+#header-name {
+  font-size: 4rem;
+  font-weight: bolder;
+  padding-right: 4rem;
+}
+
+#grid-pagina {
+  display: grid;
+  gap: var(--gridgapsize);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "welcome welcome welcome welcome" "news news news news" "calendar orar orar anunturi" "lista-utilizatori statistici date-site date-site";
+}
+
+#grid-pagina > * {
+  border: 2px solid skyblue;
+  padding: 1em;
+}
+
+#grid-pagina > figure {
+  margin: 0;
+}
+
+#welcome {
+  grid-area: welcome;
+  margin-top: 1rem;
+}
+
+#news {
+  grid-area: news;
+}
+
+#calendar {
+  grid-area: calendar;
+}
+
+#orar {
+  grid-area: orar;
+}
+
+#anunturi {
+  grid-area: anunturi;
+}
+
+#lista-utilizatori {
+  grid-area: lista-utilizatori;
+}
+
+#statistici {
+  grid-area: statistici;
+}
+
+#date-site {
+  grid-area: date-site;
+}
+
+#locatie {
+  margin-left: 1em;
+}
+
+#tab-orar {
+  border-collapse: separate;
+  border-spacing: var(--table-spacing);
+}
+
+#div-orar {
+  overflow-x: unset;
+}
+
+.taburi-iframe > a {
+  padding: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+#video-local {
+  width: 30%;
+  height: 30%;
+  max-width: 700px;
+  max-height: 350px;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  #grid-pagina {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "welcome welcome" "news news" "calendar anunturi" "orar orar" "date-site date-site" "statistici lista-utilizatori";
+    gap: var(--gridgapsize-med);
+  }
+  html {
+    font-size: 15px;
+  }
+  #div-orar {
+    overflow-x: scroll;
+  }
+}
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 13px;
+  }
+  #grid-pagina {
+    display: block;
+  }
+  #grid-pagina > * {
+    margin-top: var(--gridmargin-mic);
+    margin-bottom: var(--gridmargin-mic);
+  }
+  #tab-orar {
+    border-spacing: 0px;
+  }
+  #div-orar {
+    overflow-x: scroll;
+  }
+}
