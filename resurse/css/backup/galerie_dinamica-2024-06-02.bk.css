@@ -1,0 +1,29 @@
+.imagine_galerie_dinamica {
+  position: absolute;
+  transition: all 1s linear;
+}
+
+#galerie_dinamica {
+  margin-top: 25px;
+  width: 400px;
+  height: 400px;
+  margin-bottom: 25px;
+}
+
+@keyframes glisare {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(25%);
+  }
+  60% {
+    transform: translateX(-10%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}

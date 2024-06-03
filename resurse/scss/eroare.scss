@@ -4,22 +4,21 @@
 	background-position:center center;
 	background-repeat:no-repeat;
 	width:30%;
-	
+	img {
+		width:100%;
+	}
 }
 
-#err-imag img{
-	width:100%;
-}
 #err-coloane{
 	display:flex;
 	padding-top:1em;
 	padding-left:1em;
-}
 
-#err-coloane section{
-	font-size:2em;
-	padding-left:1em;
-}
-#err-coloane h2{
-	font-size:2em;
+	section {
+		font-size:2em;
+		padding-left:1em;
+	}
+	h2 {
+		font-size:2em;
+	}
 }

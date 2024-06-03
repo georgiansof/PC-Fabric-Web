@@ -1,4 +1,4 @@
-.container {
+.pcontainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
@@ -8,12 +8,11 @@
     border: 1px solid #ccc;
     padding: 20px;
     text-align: center;
-}
-
-.product img {
-    max-width: 100%;
-    height: auto;
-}
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+} 
 
 .buy-button {
     background-color: #007bff;
@@ -31,4 +30,24 @@
 
 #pret_redus {
     color: var(--culoare-2);
+}
+
+.nume_specificatie {
+    font-weight: bold;
+}
+
+.descriere_specificatie {
+    span, time {
+        font-style: italic !important;
+    }
+}
+
+#medie_putere {
+    position: fixed;
+    left: 80%;
+    top: 80%;
+    background-color: var(--culoare-2);
+    color: var(--culoare-text);
+    padding: 10px;
+    border-radius: 10%;
 }

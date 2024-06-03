@@ -20,18 +20,18 @@
     border-color: transparent;
     border-radius: 50%;
     transition: opacity var(--anim-duration) linear;
-  }
-  
-  #link-top:hover {
-    opacity: 1;
-  }
-  
-  #link-top:hover > #cerc {
-    transform: rotateZ(90deg);
-  }
-  
-  #link-top:hover > #sageata {
-    animation: blurAnimation var(--anim-duration) linear forwards;
+
+    &:hover {
+      opacity: 1;
+
+      & > #sageata {
+        animation: blurAnimation var(--anim-duration) linear forwards;
+      }
+    }
+
+    &:hover > #cerc {
+      transform: rotateZ(90deg);
+    }
   }
   
   #cerc {
@@ -77,22 +77,25 @@
     }
   }
   
-  #tab-orar td, #tab-orar th {
+#tab-orar {
+  td, th {
     border: 1px solid black;
   }
-  
-  #tab-orar thead th:nth-child(2n+1) {
+
+  thead th:nth-child(2n+1) {
     background-color: var(--culoare-5);
   }
+}
+
   
   .container-iframe {
     display: flex;
     flex-direction: column;
     width: 560px;
-  }
-  
-  .container-iframe > iframe {
-    width: 100%;
+
+    & > iframe {
+      width: 100%;
+    }
   }
   
   .taburi-iframe {

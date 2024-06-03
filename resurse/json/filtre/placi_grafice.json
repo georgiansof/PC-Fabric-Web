@@ -1,0 +1,12 @@
+{
+    "brand": ["AMD", "NVIDIA"],
+    "generatie": "tbd", 
+    "numar_nuclee": "numeric",
+    "eficienta": ["performant", "eficient", "hibrid"],
+    "tehnologie_fabricatie_nm": "numeric",
+    "putere_w": "numeric",
+    "frecventa_maxima_MHz": "numeric",
+    "memorie_MB": "numeric",
+    "tip_memorie": ["GDDR5", "GDDR5X", "GDDR6", "GDDR6X", "HBM", "HBM2"],
+    "pret": "numeric"
+}

@@ -17,15 +17,15 @@ html {
     gap: var(--gridgapsize);
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "imagine_1 imagine_2 imagine_3" "imagine_4 gol_1 imagine_5" "imagine_6 imagine_7 imagine_8" "imagine_9 gol_2 imagine_10" "imagine_11 imagine_12 imagine_13";
-}
 
-#galerie_statica > * {
-    border: 2px solid var(--culoare-6);
-    padding: 1em;
-}
-  
-#galerie_statica > figure {
-    margin: 0;
+    & > * {
+        border: 2px solid var(--culoare-6);
+        padding: 1em;
+    }
+
+    & > figure {
+        margin: 0;
+    }
 }
 
 body {
@@ -39,24 +39,23 @@ body {
 
 .numerotare {
     counter-increment: roman-counter;
-}
-
-.numerotare:before {
-    content: counter(roman-counter, upper-roman) ".";
-    margin-right: 10px;
-    font-weight: bold;
+    &:before {
+        content: counter(roman-counter, upper-roman) ".";
+        margin-right: 10px;
+        font-weight: bold;
+    }
 }
 
 #galerie_statica img {
     transition: all 0.125s linear;
     transform-origin: top center;
     opacity: 100%;
-}
 
-#galerie_statica img:hover {
-    transform: scale(1.4);
-    opacity: 50%;
-    border-radius: 15px;
+    &:hover {
+        transform: scale(1.4);
+        opacity: 50%;
+        border-radius: 15px;
+    }
 }
 
 @media screen and (max-width: 1500px) {

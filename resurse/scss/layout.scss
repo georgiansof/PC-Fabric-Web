@@ -31,15 +31,13 @@ html {
     gap: var(--gridgapsize);
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas: "welcome welcome welcome welcome" "news news news news" "calendar orar orar anunturi" "lista-utilizatori statistici date-site date-site";
-  }
-  
-  #grid-pagina > * {
-    border: 2px solid skyblue;
-    padding: 1em;
-  }
-  
-  #grid-pagina > figure {
-    margin: 0;
+    & > * {
+      border: 2px solid skyblue;
+      padding: 1em;
+    }
+    & > figure {
+      margin: 0;
+    }
   }
   
   #welcome {
@@ -114,7 +112,8 @@ html {
       font-size: 15px;
     }
     #div-orar {
-      overflow-x: scroll;
+      //overflow-x: scroll;
+      overflow: hidden;
     }
   }
   
@@ -124,16 +123,26 @@ html {
     }
     #grid-pagina {
       display: block;
-    }
-    #grid-pagina > * {
-      margin-top: var(--gridmargin-mic);
-      margin-bottom: var(--gridmargin-mic);
+      & > * {
+        margin-top: var(--gridmargin-mic);
+        margin-bottom: var(--gridmargin-mic);
+      }
     }
     #tab-orar {
       border-spacing: 0px;
     }
     #div-orar {
-      overflow-x: scroll;
+      //overflow-x: scroll;
+      overflow: hidden;
     }
   }
   
+
+  #container_sortare {
+    margin-right: 5rem;
+    margin-top: 3rem;
+  }
+
+  #container_filtre {
+    margin-top: 3rem;
+  }

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta name="keywords" content="bucuresti, calculator, pc, procesor, placa grafica, intel, amd, nvidia, asamblare, cabluri, ssd, stocare, surse alimentare">
+    <meta name="description" content="PC Fabric - Construiește-ți propriul PC după bunul plac, iar noi avem grijă ca piesele tale să fie compatibile. Serviciu de asamblare la cerere.">
+    <title>PC Fabric - Placa grafica</title>
+    <%- include("../fragmente/head") %>     
+    <link href="/resurse/css/items.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body>
+<%- include("../fragmente/header") %>
+
+<main class="container mt-4">
+    <section>
+        <h2>Pagină produs</h2>
+        <article id="art-produs" class="<%= locals.tip_item %>>">
+            <div class="d-flex flex-row justify-content-between">
+                
+                <div>
+                    <div style="width: 250px; height: 250px;">
+                        <% for(let i=0; i<locals.item.imagini.length; ++i) {%>
+                            <picture style="z-index: <%= i %>; position: absolute;" class="imagine_produs" id="imagine_<%=i%>">
+                                <img src="<%= locals.item.imagini[i] %>"/>
+                            </picture>
+                        <% } %>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <button class="btn btn-primary" id="prev-img">Prev</button>
+                        <button class="btn btn-primary" id="next-img">Next</button>
+                    </div>
+                </div>
+                <script src="/resurse/js/imagini_produs.js"></script>
+
+                <div id="buy-div">
+                    
+                    <% if(item.pret_redus != null) { %>
+                            <li class="d-flex flex-row" id="pret_redus">
+                                <span>Pret:</span><div><s><%= item.pret %> RON</s> <br><%= item.pret_redus %> RON</div>
+                            </li>
+                        <% } else {%>
+                        <li style="list-style-type: none;" id="pret_redus">Pret: <%= item.pret %> RON</li>
+                        <% }%>
+
+                    <button class="buy-button btn btn-primary">Adauga in cos</button>
+            </div>
+        </div>
+        <% let item_name = locals.tip_item.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) + ' ' + locals.item.brand + ' ' +  locals.item.model %>
+        <h3><span><%= item_name %></span></h3>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Brand:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- locals.item.brand %></span></p></div>
+            </div>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Generatie:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- locals.item.generatie %></span></p></div>
+            </div>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Model:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- locals.item.model %></span></p></div>
+            </div>
+            <div class="row">    
+                <div class="col-3 nume_specificatie"><p>Numar nuclee:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- locals.item.numar_nuclee %></span></p></div>
+            </div>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Clasa de eficienta:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- locals.item.eficienta %></span></p></div>
+            </div>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Litografie:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- locals.item.tehnologie_fabricatie_nm %> nm</span></p></div>
+            </div>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Putere consumata:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- locals.item.putere_w %> W</span></p></div>
+            </div>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Frecventa maxima:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- (locals.item.frecventa_maxima_MHz / 1000) %> GHz</span></p></div>
+            </div>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Memorie dedicata:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- (locals.item.memorie_MB / 1000) %> GB</span></p></div>
+            </div>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Tip memorie:</p></div>
+                <div class="col-9 descriere_specificatie"><p><span><%- locals.item.tip_memorie %></span></p></div>
+            </div>
+            <% lunile_anului = ['ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie'] %>
+            <% zilele_saptamanii = ['luni', 'marti', 'miercuri', 'joi', 'vineri', 'sambata', 'duminica'] %>
+            <div class="row">
+                <div class="col-3 nume_specificatie"><p>Data lansare:</p></div>
+                <div class="col-9 descriere_specificatie"><p><time><%- locals.item.data_lansare.getDate() %> <%- lunile_anului[locals.item.data_lansare.getMonth()] %> <%- locals.item.data_lansare.getFullYear() %> ( <%= zilele_saptamanii[locals.item.data_lansare.getDay()] %> )</time></p></div>
+            </div>
+            <!--
+            <div class="row">
+                <div class="col-9"><p>Pret:</p></div>
+                <div class="col-9"><p><span class="pret"><%- locals.item.pret %></span></p></div>
+                
+                <div class="col-9"><p>Descriere:</p></div>
+                <div class="col-9"><p><span class="descriere"><%- locals.item.descriere %></span></p></div>
+                
+                <div class="col-9"><p>Ingrediente:</p></div>
+                <div class="col-9"><p><span class="ingrediente"><%- locals.item.ingrediente %></span></p></div>
+                
+                <div class="col-9"><p>Calorii:</p></div>
+                <div class="col-9"><p><span class="calorii"><%- locals.item.calorii %></span></p></div>
+                
+                <div class="col-9"><p>Gramaj:</p></div>
+                <div class="col-9"><p><span class="gramaj"><%- locals.item.gramaj %></span></p></div>
+                
+                <div class="col-9"><p>Categorie:</p></div>
+                <div class="col-9"><p><span class="categorie"><%- locals.item.categorie %></span></p></div>
+                
+                <div class="col-9"><p>Pentru diabetici:</p></div>
+                <div class="col-9"><p><span class="pt_diabetici"><%- locals.item.pt_diabetici %></span></p></div>
+                
+                <div class="col-9"><p>Data adăugare:</p></div>
+                <div class="col-9"><p><span class="categorie"><%- locals.item.data_adaugare %></span></p></div>
+            </div>
+            -->
+        </article>
+    </section>
+</main>
+
+<%- include("../fragmente/footer") %>
+</body>
+</html>

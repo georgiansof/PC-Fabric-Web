@@ -11,6 +11,7 @@
         <meta name="description" content="PC Fabric - Construiește-ți propriul PC după bunul plac, iar noi avem grijă ca piesele tale să fie compatibile.
             Serviciu de asamblare la cerere.">
         <link rel="stylesheet" href="/resurse/css/galerie_statica.css">
+        <link rel="stylesheet" href="/resurse/css/galerie_dinamica.css">
     </head>
 
     <body>
@@ -24,10 +25,12 @@
                 Your browser does not support the video tag.
             </video>
 
+
+
             <div id="grid-pagina">
                 <section id="welcome">
                     <h2 id="text-reflectat">
-                        Bine ați venit la PC Fabric!
+                        Bine ati venit la PC Fabric!
                         <h2 id="reflexie-text">Bine ați venit la PC Fabric!</h2>
                     </h2>
                     
@@ -37,6 +40,64 @@
                 <section id="news">
                     <section id="promotii">
                         <h2>Promoții de până la <s>10%</s> <ins>40%</ins> doar la <abbr title="PC Fabric">PCF</abbr></h2>
+                        
+                        <div id="div-oferta">
+                            <h1 id="timer"></h1>
+                        </div>
+
+                            <script>
+                                
+                                function updateTimer(finishDate) {
+                                    let timer = document.getElementById('timer');
+                                    // Get the current time
+                                    var now = new Date().getTime();
+
+                                    // Find the time remaining between now and the finish date
+                                    var timeRemaining = new Date(finishDate) - now;
+
+                                    // Calculate hours, minutes, and seconds
+                                    var hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                    var minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                                    var seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                                    
+                                    // Display the timer
+                                    if(seconds > 0)
+                                        timer.innerHTML = hours + ":" + minutes + ":" + seconds;
+                                    else
+                                        timer.innerHTML = 'Offer expired !';
+
+                                    if(timeRemaining <= 5999)
+                                        timer.style.color = 'red';
+                                    // Update the timer every second
+                                    if(now < new Date(finishDate).getTime())
+                                        setTimeout(function() {
+                                            updateTimer(finishDate);
+                                        }, 250);
+                                }
+                                function fetchOferta() {
+                                    let responseData;
+                                    const xhr = new XMLHttpRequest();
+
+                                    xhr.open('GET', 'http://[<%=locals.ip%>]:8080/oferta', true);
+                                    xhr.onload = function() {
+                                        responseData = JSON.parse(xhr.responseText);
+                                        document.getElementById('div-oferta').innerHTML = `
+                                            <img src="${responseData.produs_imagine}">
+                                            <p>Hot sale! Din ${responseData.categorie} : ${responseData.produs_brand} ${responseData.produs_model} reducere ${responseData.reducere}%</p>
+                                            <h1 id="timer">00:00:00</h1>
+                                        `;
+                                        document.getElementById('timer').style.color = 'var(--culoare-text)';
+                                        updateTimer(responseData.data_finalizare);
+                                        setTimeout(fetchOferta, new Date().getTime() - (new Date(responseData.data_finalizare)).getTime()); /// loop
+                                    };
+
+                                    // Send the request
+                                    xhr.send();
+                                }
+                                fetchOferta();
+                            </script>
+                            
+
                             <math xmlns="http://www.w3.org/1998/Math/MathML">
                                 <mrow>
                                     <mi>
@@ -218,6 +279,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
                 </div>
             </div>
 
+            <%- include("../fragmente/galerie_dinamica.ejs") %>
             <%- include("../fragmente/galerie_statica.ejs") %>
 
         </main>

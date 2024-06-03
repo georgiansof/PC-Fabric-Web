@@ -1,0 +1,11 @@
+<div id="galerie_dinamica">
+    <% for(let i=0; i<locals.ob_galerie_dinamica.titlu.length; ++i) {%>
+        <picture class="imagine_galerie_dinamica" id="imagine_<%=i%>">
+            <source srcset="<%= locals.ob_galerie_dinamica.sursa_mica[i] %>" media="(max-width:700px)"/>
+            <source srcset="<%= locals.ob_galerie_dinamica.sursa_medie[i] %>" media="(max-width:1200px)"/>
+            <img src="<%= locals.ob_galerie_dinamica.sursa[i] %>"/>
+        </picture>
+    <% } %>
+</div>
+
+<script src="/resurse/js/galerie_dinamica.js"></script>

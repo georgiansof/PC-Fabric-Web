@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html  lang="ro">
     <head>
-        <meta name="description" content="Cofetaria Dulcelind ofera prajituri, torturi, produse de patiserie cu optiunea de achizitie online si livrare prin curier.">
-        <meta name="keywords" content="cofetarie, Dulcelind, prajituri, torturi, dulce, pateuri, produse">
+        <meta name="keywords" content="bucuresti, calculator, pc, procesor, placa grafica, intel, amd, nvidia, asamblare, cabluri, ssd, stocare, surse alimentare">
+        <meta name="description" content="PC Fabric - Construiește-ți propriul PC după bunul plac, iar noi avem grijă ca piesele tale să fie compatibile.">
         
-        <title>PC Fabric galerie_statica</title>
+        <title>PC Fabric - Procesoare</title>
         <%- include("../fragmente/head") %>     
         <link rel="stylesheet" href="/resurse/css/galerie_statica.css">
     </head>
@@ -14,13 +14,15 @@
     <link rel="stylesheet" href="/resurse/css/filtrare.css" type="text/css"/>
 
     <main>
-        <%- include("../fragmente/filtrare", {json_filtre: json_filtre, items: items}) %>
+        <%- include("../fragmente/filtrare", {tip_item: tip_item ,json_filtre: json_filtre, items: items}) %>
 
-        <div class="container" id="productContainer">
+        <div class="pcontainer" id="productContainer">
             <% items.forEach( (item) => { %>
-                <div class="product">
-                    <p>Procesor <%= item.brand %> <%= item.model %></p>
-                    <img src="<%= item.cale_imagine %>" alt="Product Photo">
+                <div class="product" id="procesor-<%= item.id %>">
+                    <a href="/procesoare/<%= item.id %>"> Procesor <%= item.brand %> <%= item.model %>
+                        <br>
+                        <img src="<%= item.cale_imagine %>" alt="Product Photo">
+                    </a>
                     <ul>
                         <li>Soclu: <%= item.soclu_procesor %></li>
                         <li>Generatie: <%= item.generatie %></li>
@@ -36,6 +38,13 @@
                         <li id="filler_pret" style="color: rgba(0,0,0,0);">Pret intreg</li>
                         <li id="pret_redus">Pret acum: <%= item.pret %> RON</li>
                         <% }%>
+
+                        <% if((new Date().getTime() - new Date(item.data_lansare).getTime()) / (1000 * 60 * 60 * 24 * 365.25) > 5) { %>
+                                <li style="color: red;">Extra discount 15% în coș.</li>
+                        <% } %>
+                        <% if(item.ieftin) {%>
+                            <li style="color: green;">Cel mai ieftin produs!</li>
+                        <% } %>
                         <button class="buy-button">Adauga in cos</button>
                     </ul>
                 </div>
@@ -46,6 +55,7 @@
     <%- include("../fragmente/footer") %>
     <script>
         const items = JSON.parse('<%- JSON.stringify(items) %>');
+        const tip_componenta = '<%- tip_item %>';
         const json_filtre = JSON.parse('<%- JSON.stringify(json_filtre) %>');
     </script>
     <script src="/resurse/js/filtrare_sortare.js"></script>

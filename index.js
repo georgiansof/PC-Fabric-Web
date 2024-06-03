@@ -14,14 +14,6 @@ var client = new Client({database: 'pcfabric',
     port: '5432'});
 client.connect();
 
-client.query('select * from prajituri', (err, rez) => {
-    if(err) {
-        console.log(err);
-        return;
-    }
-    console.log(rez);
-});
-
 
 obGlobal = {
     obErori:null,
@@ -37,10 +29,36 @@ for (let folder of vect_foldere) {
     }
 }
 
+function isNaturalNumber(value) {
+    const regExp = /^[1-9]\d*$/;
+    return regExp.test(value);
+}
+
+let oferte = []
+
 app = express();
 console.log("Folder proiect", __dirname);
 console.log("Cale fisier", __filename);
 console.log("Director de lucru", process.cwd());
+
+async function startServer() {
+
+    const tipuri_componente = await getTipuriComponente();
+    genereazaOferta();
+    console.log(tipuri_componente);
+
+    const defaultData = {
+        appName: 'PC Fabric',
+        currentUser: null, // Assuming you have user information stored in req.user
+        tipuri_componente: tipuri_componente
+    };
+
+    app.use((req, res, next) => {
+        res.locals.defaultData = defaultData;
+        next();
+    });
+
+    
 app.set("view engine","ejs");
 app.use("/resurse", express.static(__dirname+"/resurse"));
 
@@ -62,7 +80,8 @@ app.get('/suma/:a/:b', function(req,res) {
 
 app.get(['/','/home','/index'], (req, res) => {
     let obiect_galerie = construiesteGalerie();
-    res.render("pagini/index", {ip: req.ip, ob_galerie: obiect_galerie});
+    let obiect_galerie_dinamica = construiesteGalerieDinamica();
+    res.render("pagini/index", {ip: req.ip, ob_galerie: obiect_galerie, ob_galerie_dinamica: obiect_galerie_dinamica});
 });
 
 app.get('/resurse/imagini/galerie/anotimpuri/:imageName', (req, res) => {
@@ -104,7 +123,6 @@ app.get("/*.ejs", (req, res) => {
 
 app.get(new RegExp('^\/resurse[a-zA-z0-9\/_\s]*\/$'), (req, res) => {
     afisareEroare(res, 403);
-
 });
 
 app.get("/favicon.ico", (req, res) => {
@@ -112,8 +130,68 @@ app.get("/favicon.ico", (req, res) => {
 
 });
 
-
 /************************ PRODUSE ******************************** */
+
+app.get('/procesoare/:id', (req, res) => {
+    if(!isNaturalNumber(req.params.id))
+        afisareEroare(res, 403);
+
+    client.query(`select * from procesoare where id='${req.params.id}'`, (err, procesoare) => {
+        if(err) {
+            console.log(err);
+            afisareEroare(res, 2);
+            return;
+        }
+
+        procesoare.rows[0].imagini = [];
+
+        let cale_imagini = procesoare.rows[0].cale_imagine.slice(0, procesoare.rows[0].cale_imagine.lastIndexOf('/'));
+        
+        try {
+            const files = fs.readdirSync(__dirname+cale_imagini);
+          
+            files.forEach(file => {
+              procesoare.rows[0].imagini.push(cale_imagini + '/' + file);
+            });
+          } catch (err) {
+            console.error('Error reading directory:', err);
+          }
+
+        console.log(procesoare.rows[0].imagini);
+        res.render('pagini/procesor.ejs', {tip_item:"procesor", item: procesoare.rows[0]});
+    })
+});
+
+app.get('/placi_grafice/:id', (req, res) => {
+    if(!isNaturalNumber(req.params.id))
+        afisareEroare(res, 403);
+
+    client.query(`select * from placi_grafice where id='${req.params.id}'`, (err, placi_grafice) => {
+        if(err) {
+            console.log(err);
+            afisareEroare(res, 2);
+            return;
+        }
+
+        placi_grafice.rows[0].imagini = [];
+
+        let cale_imagini = placi_grafice.rows[0].cale_imagine.slice(0, placi_grafice.rows[0].cale_imagine.lastIndexOf('/'));
+        
+        try {
+            const files = fs.readdirSync(__dirname+cale_imagini);
+          
+            files.forEach(file => {
+              placi_grafice.rows[0].imagini.push(cale_imagini + '/' + file);
+            });
+          } catch (err) {
+            console.error('Error reading directory:', err);
+          }
+
+        console.log(placi_grafice.rows[0].imagini);
+
+        res.render('pagini/placa_grafica.ejs', {tip_item:"placa_grafica", item: placi_grafice.rows[0]});
+    })
+});
 
 app.get('/produse', (req, res) => {
     client.query('select * from prajituri', (err, rez) => {
@@ -145,6 +223,11 @@ app.get('/galerie_statica', (req, res) => {
     res.render('pagini/galerie_statica.ejs', {ob_galerie: obiect_galerie});
 });
 
+app.get('/galerie_dinamica', (req, res) => {
+    let obiect_galerie = construiesteGalerieDinamica();
+    res.render('pagini/galerie_dinamica.ejs', {ob_galerie_dinamica: obiect_galerie});
+});
+
 app.get('/procesoare', (req, res) => {
     let json = JSON.parse(fs.readFileSync("resurse/json/filtre/procesoare.json"));
     client.query('select * from procesoare', (err, procesoare) => {
@@ -153,8 +236,52 @@ app.get('/procesoare', (req, res) => {
             afisareEroare(res, 2);
             return;
         }
-        res.render('pagini/procesoare.ejs', {json_filtre: json, items: procesoare['rows']});
+
+        let procesorIeftin;
+        let pret_ieftin = 1_000_000_000;
+        for(let procesor of procesoare.rows) {
+            procesor.ieftin = false;
+            let pret_real = parseFloat(procesor.pret_redus || procesor.pret)
+            if(pret_real < pret_ieftin) {
+                pret_ieftin = pret_real;
+                procesorIeftin = procesor;
+            }
+        }
+
+        procesorIeftin.ieftin = true;
+
+        res.render('pagini/procesoare.ejs', {tip_item:"procesor", json_filtre: json, items: procesoare['rows']});
     })
+});
+
+app.get('/oferta', (req, res) => {
+    res.send(getOferta());
+});
+
+app.get('/placi_grafice', (req, res) => {
+    let json = JSON.parse(fs.readFileSync("resurse/json/filtre/placi_grafice.json"));
+    client.query('select * from placi_grafice', (err, placi_grafice) => {
+        if(err) {
+            console.log(err);
+            afisareEroare(res, 2);
+            return;
+        }
+
+        let placaIeftina;
+        let pret_ieftin = 1_000_000_000;
+        for(let placa of placi_grafice.rows) {
+            placa.ieftin = false;
+            let pret_real = parseFloat(placa.pret_redus || placa.pret)
+            if(pret_real < pret_ieftin) {
+                pret_ieftin = pret_real;
+                placaIeftina = placa;
+            }
+        }
+
+        placaIeftina.ieftin = true;
+
+        res.render('pagini/placi_grafice', { tip_item:"placa_grafica", json_filtre: json, items: placi_grafice.rows });
+    });
 });
 
 app.get('/*', (req, res) => {
@@ -184,6 +311,122 @@ app.get('/*', (req, res) => {
         }
     }
 });
+
+
+initErori();
+
+scssToCompile = getFilesWithExtension(obGlobal.folderScss, '.scss')
+for(scssFile of scssToCompile)
+    compileazaScss(scssFile);
+
+fs.watch(obGlobal.folderScss, { recursive: true }, (eventType, filename) => {
+    if (filename && path.extname(filename) === '.scss') {
+        try {
+            compileazaScss(filename);
+            console.log('Fisierul ' + filename + ' a fost recompilat !');
+        }
+        catch(e) {
+            console.log('Fisierul ' + filename + ' contine erori de sintaxa !');
+        }
+    }
+});
+
+curatareBackupuri(__dirname + "/resurse/css/backup", 7);
+
+app.listen(8080);
+console.log("Serverul a pornit");
+
+function curatareBackupuri(directoryPath, daysToKeep) {
+    const currentTime = new Date().getTime();
+
+    const cutoffTime = currentTime - (daysToKeep * 24 * 60 * 60 * 1000);
+
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            console.error('Error reading directory:', err);
+            return;
+        }
+
+        files.forEach(file => {
+            const match = file.match(/(\d{4}-\d{2}-\d{2})\.bk/);
+            if (match) {
+                const fileDate = new Date(match[1]).getTime();
+
+                // If the file is older than the cutoff time, delete it
+                if (fileDate < cutoffTime) {
+                    fs.unlink(path.join(directoryPath, file), err => {
+                        if (err) {
+                            console.error('Error deleting file:', err);
+                        } else {
+                            console.log('Deleted file:', file);
+                        }
+                    });
+                }
+            }
+        });
+    });
+}
+
+    function getRandomValueFromArray(array) {
+        // Generate a random index within the bounds of the array
+        const randomIndex = Math.floor(Math.random() * array.length);
+        
+        // Return the value at the random index
+        return array[randomIndex];
+    }
+
+    function genereazaOferta() {
+        let filedata = fs.readFileSync(__dirname + '/resurse/json/oferte.json');
+        if(filedata!='')
+            oferte = JSON.parse(filedata);
+        else
+            oferte = JSON.parse('{"oferte":[]}');
+        
+        let valori_oferte = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+
+        let categorii = [...tipuri_componente];
+        if(oferte.oferte[0] != null)
+            categorii = categorii.filter(categ => categ != oferte.oferte[0].categorie);
+
+
+        let categorie_aleasa = getRandomValueFromArray(categorii);
+        let produs_ales;
+        client.query(`select * from ${categorie_aleasa}`, (err, produse) => {
+            if(err) {
+                console.log(err);
+                afisareEroare(res, 2);
+                return;
+            }
+            produs_ales = getRandomValueFromArray(produse.rows);
+            //console.log(produs_ales);
+    
+            let oferta_generata = {
+                "categorie": categorie_aleasa,
+                "produs_brand": produs_ales.brand,
+                "produs_model": produs_ales.model,
+                "produs_imagine": produs_ales.cale_imagine, 
+                "data_incepere": new Date(),
+                "data_finalizare": new Date(new Date().getTime() + 15 * 1000),
+                "reducere": getRandomValueFromArray(valori_oferte)
+            };
+    
+            oferte.oferte.unshift(oferta_generata);
+
+            oferte.oferte = oferte.oferte.filter(oferta => (new Date().getTime() - new Date(oferta['data_finalizare']).getTime()) / 1000 <= 60); /// stergere oferte vechi
+            
+            fs.writeFileSync(__dirname + '/resurse/json/oferte.json', JSON.stringify(oferte));
+            
+            setTimeout(genereazaOferta, 15_000);
+        });
+
+    }
+
+    function getOferta() {
+        oferte = JSON.parse(fs.readFileSync(__dirname + '/resurse/json/oferte.json'));
+
+        return oferte.oferte[0];
+    }
+}
 
 function getSeason(date) {
     const month = date.getMonth() + 1;
@@ -225,6 +468,61 @@ function construiesteGalerie() {
     let descrieri = []
 
     for(let i = 0; i < 13; ++i) {
+        surse.push(jsonGalerie.cale_galerie + "/" + imagini_alese[i].cale_fisier + "." + imagini_alese[i].extensie);
+        surse_mici.push(jsonGalerie.cale_galerie + "/" + imagini_alese[i].cale_fisier + "-mic" + "." + imagini_alese[i].extensie)
+        surse_medii.push(jsonGalerie.cale_galerie + "/" + imagini_alese[i].cale_fisier + "-mediu" + "." + imagini_alese[i].extensie)
+        titluri.push(imagini_alese[i].titlu);
+        descrieri.push(imagini_alese[i].text_descriere);
+    }
+
+    let obGalerie = {
+        sursa: surse,
+        sursa_mica: surse_mici,
+        sursa_medie: surse_medii,
+        titlu: titluri,
+        descriere: descrieri
+    }
+    return obGalerie;
+}
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function construiesteGalerieDinamica() {
+    let nr_imagini_necesare = Math.floor(Math.random() * 7) + 6;
+    /// Math.random -> (0,1) -> (0,6) -> (6, 12)
+    let jsonGalerie;
+    try {
+        let filedata = fs.readFileSync('galerie.json', 'utf8');
+        jsonGalerie = JSON.parse(filedata);
+    } catch(err) {
+        console.error("Error reading file:", err);
+    }
+    imagini_alese = []
+    nr_img = 0;
+
+    jsonGalerie.imagini = shuffleArray(jsonGalerie.imagini);
+
+    for(imagine of jsonGalerie.imagini)
+        if(nr_img < nr_imagini_necesare) {
+            imagini_alese.push(imagine);
+            ++nr_img;
+        }
+    if(nr_img < 6)
+        throw "Prea putine imagini !";
+
+    let surse = []
+    let surse_medii = []
+    let surse_mici = []
+    let titluri = []
+    let descrieri = []
+
+    for(let i = 0; i < nr_imagini_necesare; ++i) {
         surse.push(jsonGalerie.cale_galerie + "/" + imagini_alese[i].cale_fisier + "." + imagini_alese[i].extensie);
         surse_mici.push(jsonGalerie.cale_galerie + "/" + imagini_alese[i].cale_fisier + "-mic" + "." + imagini_alese[i].extensie)
         surse_medii.push(jsonGalerie.cale_galerie + "/" + imagini_alese[i].cale_fisier + "-mediu" + "." + imagini_alese[i].extensie)
@@ -297,6 +595,21 @@ function getFilesWithExtension(folderPath, extension) {
     return filesWithExtension;
 }
 
+function getTipuriComponente() {
+    return new Promise((resolve, reject) => {
+        client.query(`SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';`, (err, comp) => {
+            if(err) {
+                console.log(err);
+                reject(err);
+            } else {
+                let tipuri_componente = comp.rows.filter(obj => obj.table_name != 'prajituri').map(obj => obj.table_name);
+                resolve(tipuri_componente);
+            }
+        });
+    });
+}
+
+
 function formatCurrentDate() {
     var d = new Date(),
         month = '' + (d.getMonth() + 1),
@@ -328,23 +641,4 @@ function compileazaScss(caleScss, caleCss) {
     fs.writeFileSync(caleCss, result.css);
 }
 
-initErori();
-
-scssToCompile = getFilesWithExtension(obGlobal.folderScss, '.scss')
-for(scssFile of scssToCompile)
-    compileazaScss(scssFile);
-
-fs.watch(obGlobal.folderScss, { recursive: true }, (eventType, filename) => {
-    if (filename && path.extname(filename) === '.scss') {
-        try {
-            compileazaScss(filename);
-            console.log('Fisierul ' + filename + ' a fost recompilat !');
-        }
-        catch(e) {
-            console.log('Fisierul ' + filename + ' contine erori de sintaxa !');
-        }
-    }
-});
-
-app.listen(8080);
-console.log("Serverul a pornit");
+startServer();

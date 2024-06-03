@@ -1,140 +1,307 @@
-<div id="container_filtrare_sortare">
-    <div id="container_filtre">
-    <%
-        const maxNumericValues = 10;
-        for(var key of Object.keys(json_filtre)) {
-            if(json_filtre[key] === "numeric") {
-                var uniqueArray = items
-                                    .map(obj => obj[key])
-                                    .filter((value, index, array) => array.indexOf(value) === index)
-                                    .sort((a,b) => a - b);
-                if(uniqueArray.length > maxNumericValues) {
-                    %>
-                    <div id="filtru-<%=key%>" class="d-inline-flex flex-column">
-                    <%
+<div id="container_filtrare_sortare" class="container">
+    <div id="container_filtre" class="row">
+        <div class="col-12 mb-1">
+            <label style="font-weight: bold;" for="searchbox">Conține: </label>
+            <input id="searchbox" type="text" class="form-control"/>
+        </div> 
+        <% 
+            function getMinValueForKey(key) {
+                if(key=='pret') {
+                    let minval = 1_000_000_000;
+                    for(let item of items) {
+                        let val = item.pret_redus || item.pret;
+                        if(parseFloat(val) < minval)
+                            minval = val;
+                    }
+                    return minval;
                 }
-                else {
-                    %>
-                    <div id="filtru-<%=key%>" class="d-inline-flex">
-                    <%
+
+                let minval = 1_000_000_000;
+
+                for(let item of items) 
+                    if(parseFloat(item[key]) < minval)
+                        minval = item[key];
+                console.log(key, minval);
+                return minval;
+            }
+            function getMaxValueForKey(key) {
+                if(key=='pret') {
+                    let maxval = -1_000_000_000;
+                    for(let item of items) {
+                        let val = item.pret_redus || item.pret;
+                        if(parseFloat(val) > maxval)
+                            maxval = val;
+                    }
+                    return maxval;
                 }
-            }
-            else {
-                %>
-                <div id="filtru-<%=key%>" class="d-inline-flex">
-                <%
-            }
 
+                let maxval = -1_000_000_000;
 
-            %>
-            <strong><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %>
-            <%
-            if(key === "frecventa_maxima") {
-                %>
-                    (MHz)
-                <%
+                for(let item of items)
+                    if(parseFloat(item[key]) > maxval)
+                        maxval = item[key];
+                console.log(key, maxval);
+                return maxval;
             }
-            if(key === "putere") {
-                %>
-                    (W)
-                <%
-            }
-            %>
-            </strong>
-            <%
-            if(Array.isArray(json_filtre[key])) {
-                %>
-                <div class="d-inline-flex flex-row">
-                <%
-                json_filtre[key].forEach(element => {
-                    %>
-                    <div style="margin-left: 5px;" class="form-check">
-                        <input class="form-check-input" id="checkbox-<%= key %>-<%= element %>" type="checkbox" name="<%= key %>" value="<%= element %>" checked>
-                        <label class="form-check-label" for="checkbox-<%= key %>-<%= element %>"><%= element %></label>
-                    </div>
-                    <%
-                });
-                %>
-                </div>
-                <%
-            }
-            else if(json_filtre[key] === "boolean") {
-                %>
-                    <div style="margin-left: 10px;" class="btn-group btn-group-toggle" data-toggle="buttons">
-                        
-                        <label class="btn btn-outline-primary <%=key%>" for="radio-<%=key%>-da"><input id="radio-<%=key%>-da" class="form-check-input" type="radio" autocomplete="off" name="<%= key %>" value="true"> Da</label> 
-                        <label class="btn btn-outline-primary <%=key%>" for="radio-<%=key%>-nu"><input id="radio-<%=key%>-nu" class="form-check-input" type="radio" autocomplete="off" name="<%= key %>" value="false"> Nu</label>
-                        <label class="btn btn-primary selected <%=key%>" for="radio-<%=key%>-undef"><input id="radio-<%=key%>-undef" class="form-check-input" autocomplete="off" type="radio" name="<%= key %>" value="undefined" checked> Irelevant</label>
-                    </div>
-                <%
-            }
-            else if(json_filtre[key] === "numeric" || json_filtre[key] === "tbd") {
-                var uniqueArray = items
-                                    .map(obj => obj[key])
-                                    .filter((value, index, array) => array.indexOf(value) === index)
-                                    .sort((a,b) => a - b);
-
-                if(json_filtre[key] === "numeric" && uniqueArray.length > maxNumericValues) {/// transform in slider
-                    %>
-                    <div class="d-flex">
-                        <div class="form-floating flex-row">
-                            <input id="minim-<%=key%>" class="numericInput form-control form-control-sm" type="text" pattern="[0-9]*" name="<%= key %>_low" placeholder="valoare minima">
-                            <label class="small" for="minim-<%=key%>">Minim:</label>
-                        </div>
-                        <div class="form-floating flex-row">
-                            <input id="maxim-<%=key%>" class="numericInput form-control form-control-sm" type="text" pattern="[0-9]*" name="<%= key %>_high" placeholder="valoare maxima">
-                            <label class="small" for="maxim-<%=key%>">Maxim:</label>
-                        </div>
-                    </div>
-                        
-                    <% 
-                }
-                else {
-                    for(var value of uniqueArray) {
+        %>
+        <%
+            const maxNumericValues = 10;
+            for(var key of Object.keys(json_filtre)) {
+                if(json_filtre[key] === "numeric") {
+                    var uniqueArray = items
+                                        .map(obj => obj[key])
+                                        .filter((value, index, array) => array.indexOf(value) === index)
+                                        .sort((a,b) => a - b);
+                    if(uniqueArray.length > maxNumericValues) {
                         %>
-                        <div style="margin-left: 5px;" class="form-check">
-                            <input class="form-check-input" id="checkbox-<%= key %>-<%= value %>" type="checkbox" name="<%= key %>" value="<%= value %>" checked>
-                            <label class="form-check-label" for="checkbox-<%= key %>-<%= value %>"><%= value %></label>
+                        <div id="filtru-<%=key%>" class="col-12 mb-1 d-flex align-items-center">
+                        <%
+                    }
+                    else {
+                        %>
+                        <div id="filtru-<%=key%>" class="col-12 mb-1 d-flex align-items-center">
+                        <%
+                    }
+                }
+                else {
+                    %>
+                    <div id="filtru-<%=key%>" class="col-12 mb-1 d-flex align-items-center">
+                    <%
+                }
+
+                %>
+                <strong class="me-2"><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %>
+                <%
+                if(key === "frecventa_maxima") {
+                    %>
+                        (MHz)
+                    <%
+                }
+                if(key === "putere") {
+                    %>
+                        (W)
+                    <%
+                }
+                %>
+                </strong>
+                <%
+                if(Array.isArray(json_filtre[key])) {
+                    if(key != 'brand') {
+                        %>
+                        <div class="d-inline-flex flex-wrap">
+                        <%
+                        json_filtre[key].forEach(element => {
+                            %>
+                            <div style="margin-left: 5px;" class="form-check">
+                                <input class="form-check-input" id="checkbox-<%= key %>-<%= element %>" type="checkbox" name="<%= key %>" value="<%= element %>" data-toggle='toggle' data-on="Da" data-off="Nu" checked>
+                                <label class="form-check-label text-nowrap" for="checkbox-<%= key %>-<%= element %>"><%= element %></label>
+                            </div>
+                            <%
+                        });
+                        %>
+                        </div>
+                        <%
+                    }
+                    else {
+                        %>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <% 
+                             if(locals.tip_item=='procesor') { %>
+                                <label class="btn btn-outline-primary <%=key%>" for="radio-<%=key%>-intel"><input id="radio-<%=key%>-intel" class="form-check-input" type="radio" autocomplete="off" name="<%= key %>" value="intel">Intel</label> 
+                            <% }
+                                else {%>
+                                    <label class="btn btn-outline-primary <%=key%>" for="radio-<%=key%>-nvidia"><input id="radio-<%=key%>-nvidia" class="form-check-input" type="radio" autocomplete="off" name="<%= key %>" value="nvidia">NVIDIA</label> 
+                                <% } %>
+
+                            <label class="btn btn-outline-primary <%=key%>" for="radio-<%=key%>-amd"><input id="radio-<%=key%>-amd" class="form-check-input" type="radio" autocomplete="off" name="<%= key %>" value="amd">AMD</label>
+                            <label class="btn btn-primary selected <%=key%>" for="radio-<%=key%>-any"><input id="radio-<%=key%>-any" class="form-check-input" autocomplete="off" type="radio" name="<%= key %>" value="undefined" checked> Irelevant </label>
                         </div>
                         <%
                     }
                 }
-            }
-            %>
-            </div>
-            <br>
-            <%
-        }
-    %>
-    <button class="btn btn-primary d-inline-flex" id="buton_filtrare"><span class="bi bi-filter"></span><span class="d-none d-sm-block">Filtreaza</span></button>
-    </div>
-    <div id="container_sortare">
-        <select name="criteriu_sortare">
-            <%
-                for(var key of Object.keys(json_filtre)) {
-                    if(json_filtre[key] === "numeric") {
-                        if(key !== "pret") {
+                else if(json_filtre[key] === "boolean") {
+                    %>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-primary <%=key%>" for="radio-<%=key%>-da"><input id="radio-<%=key%>-da" class="form-check-input" type="radio" autocomplete="off" name="<%= key %>" value="true"> Da</label> 
+                            <label class="btn btn-outline-primary <%=key%>" for="radio-<%=key%>-nu"><input id="radio-<%=key%>-nu" class="form-check-input" type="radio" autocomplete="off" name="<%= key %>" value="false"> Nu</label>
+                            <label class="btn btn-primary selected <%=key%>" for="radio-<%=key%>-undef"><input id="radio-<%=key%>-undef" class="form-check-input" autocomplete="off" type="radio" name="<%= key %>" value="undefined" checked> Irelevant</label>
+                        </div>
+                    <%
+                }
+                else if(json_filtre[key] === "numeric" || json_filtre[key] === "tbd" || json_filtre[key] === "datalist") {
+                    var uniqueArray = items
+                                        .map(obj => obj[key])
+                                        .filter((value, index, array) => array.indexOf(value) === index)
+                                        .sort((a,b) => a - b);
+                    if(json_filtre[key] === "datalist") {
+                        %>
+                            <div>
+                                <input list="datalist-<%= key %>" name="<%= key %>" id="input-datalist-<%= key %>" class="input-datalist form-control" value="oricare">
+                                <datalist id="datalist-<%= key %>">
+                                    <option value="oricare">
+                                    <%
+                                    for(var value of uniqueArray) {
+                                    %>
+                                        <option value="<%= value %>">
+                                    <%
+                                    }
+                                    %>
+                                </datalist>
+                            </div>
+                        <%
+                    }
+                    else
+                        if(json_filtre[key] === "numeric" && uniqueArray.length > maxNumericValues) {/// transform in slider
                             %>
-                            <option value="<%= key %>"><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %></option>
-                            <%
+                            <div class="d-flex">
+                                <div class="form-floating flex-row">
+                                    <input id="minim-<%=key%>" class="numericInput form-control form-control-sm" type="text" pattern="[0-9]*" name="<%= key %>_low" value="<%=getMinValueForKey(key)%>" placeholder="valoare minima">
+                                    <label style="color: black;" class="small" for="minim-<%=key%>">Minim:</label>
+                                </div>
+                                <div class="form-floating flex-row">
+                                    <input id="maxim-<%=key%>" class="numericInput form-control form-control-sm" type="text" pattern="[0-9]*" name="<%= key %>_high" value="<%=getMaxValueForKey(key)%>" placeholder="valoare maxima">
+                                    <label style="color: black;" class="small" for="maxim-<%=key%>">Maxim:</label>
+                                </div>
+                            </div>
+                                
+                            <% 
                         }
                         else {
-                            %>
-                            <option value="<%= key %>" selected><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %></option>
-                            <%
+                            for(var value of uniqueArray) {
+                                %>
+                                <div style="margin-left: 5px;" class="form-check">
+                                    <input class="form-check-input" id="checkbox-<%= key %>-<%= value %>" type="checkbox" name="<%= key %>" value="<%= value %>" checked>
+                                    <label class="form-check-label text-nowrap" for="checkbox-<%= key %>-<%= value %>"><%= value %></label>
+                                </div>
+                                <%
+                            }
                         }
-                    }
                 }
-            %>
-        </select><br>
-        <div style="display: flex;" class="flex-row">
-            <div style="margin-left: 5px;" class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-outline-primary buton-tip-sortare"><input class="form-check-input" type="radio" name="crescator" value="false" /> Descrescător</label>
-                <label class="btn btn-primary selected buton-tip-sortare"><input class="form-check-input" type="radio" name="crescator" value="true" checked /> Crescător</label>
+                %>
+                </div>
+                <%
+            }
+        %>
+    </div>
+    <div class="row">
+        <div class="col-12 mb-1">
+            <strong>Lună lansare</strong>
+            <select name="months" multiple id="monthSelect" class="form-select w-auto">
+                <option value="ianuarie" selected>ianuarie</option>
+                <option value="februarie" selected>februarie</option>
+                <option value="martie" selected>martie</option>
+                <option value="aprilie" selected>aprilie</option>
+                <option value="mai" selected>mai</option>
+                <option value="iunie" selected>iunie</option>
+                <option value="iulie" selected>iulie</option>
+                <option value="august" selected>august</option>
+                <option value="septembrie" selected>septembrie</option>
+                <option value="octombrie" selected>octombrie</option>
+                <option value="noiembrie" selected>noiembrie</option>
+                <option value="decembrie" selected>decembrie</option>
+            </select>
+        </div>
+        <div class="col-12 mb-1">
+            <div class="form-check">
+                <input class="form-check-input" id="checkbox-discount-vechi" type="checkbox" name="discount-vechi">
+                <label class="form-check-label" for="checkbox-discount-vechi">Doar cu discount pe baza mai mult de 5 ani de la lansare</label>
             </div>
         </div>
+        <% 
+            function getMinYear() {
+                let minyear = 99999;
+                items.map(element => {
+                    if(parseInt(element.data_lansare.getFullYear()) < minyear)
+                        minyear = parseInt(element.data_lansare.getFullYear());
+                });
+                return minyear;
+            }
             
-        <button class="btn btn-primary d-inline-flex" id="buton_sortare"><span class="bi bi-sort-up"></span><span class="d-none d-sm-block">Sortează</span></button>
-        <button class="btn btn-primary d-inline-flex" id="buton_resetare"><span class="bi bi-arrow-clockwise"></span><span class="d-none d-sm-block">Resetează</span></button>    
-    </div><br>
+            function getMaxYear() {
+                let maxyear = 0;
+                items.map(element => {
+                    if(parseInt(element.data_lansare.getFullYear()) > maxyear)
+                        maxyear = parseInt(element.data_lansare.getFullYear());
+                });
+                return maxyear;
+            }
+        %>
+        <strong><label for="min-year">Mai nou de anul: <span id="min-year-disp"><%=getMinYear()%></span></label></strong>
+        <input id="min-year" type="range" min="<%= getMinYear() %>" max="<%= getMaxYear() %>" value="<%= getMinYear() %>" step="1">
+    
+        <div class="col-12 mb-1">
+            <button class="btn btn-primary d-inline-flex" id="buton_filtrare">
+                <span class="bi bi-funnel-fill"></span>
+                <span class="d-none d-sm-block">Filtreaza</span>
+            </button>
+        </div>
+    </div>
+    <div id="container_sortare" class="row">
+        <div class="col-12 col-md-6 mb-1">
+            <select name="criteriu_sortare" class="form-select">
+                <option value="nume">Nume</option>
+                <%
+                    for(var key of Object.keys(json_filtre)) {
+                        if(json_filtre[key] === "numeric") {
+                            if(key !== "pret") {
+                                %>
+                                <option value="<%= key %>"><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %></option>
+                                <%
+                            }
+                            else {
+                                %>
+                                <option value="<%= key %>" selected><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %></option>
+                                <%
+                            }
+                        }
+                    }
+                %>
+            </select>
+        </div>
+        <div class="col-12 col-md-6 mb-1">
+            <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                <label class="btn btn-outline-primary w-50 buton-tip-sortare"><input class="form-check-input" type="radio" name="crescator" value="false" /> Descrescător</label>
+                <label class="btn btn-primary w-50 selected buton-tip-sortare"><input class="form-check-input" type="radio" name="crescator" value="true" checked /> Crescător</label>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-1">
+            <select name="criteriu_sortare_secundar" class="form-select">
+                <option value="nume" selected>Nume</option>
+                <%
+                    for(var key of Object.keys(json_filtre)) {
+                        if(json_filtre[key] === "numeric") {
+                                %>
+                                <option value="<%= key %>"><%= key.replace(/_/g, ' ').replace(/^\w/, char => char.toUpperCase()) %></option>
+                                <%
+                        }
+                    }
+                %>
+            </select>
+        </div>
+        <div class="col-12 col-md-6 mb-1">
+            <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                <label class="btn btn-outline-primary w-50 buton-tip-sortare"><input class="form-check-input" type="radio" name="crescator-secundar" value="false" /> Descrescător</label>
+                <label class="btn btn-primary w-50 selected buton-tip-sortare"><input class="form-check-input" type="radio" name="crescator-secundar" value="true" checked /> Crescător</label>
+            </div>
+        </div>
+        <div class="col-4 mb-1">
+            <button class="btn btn-primary d-inline-flex w-100" id="buton_sortare">
+                <span class="bi bi-sort-up"></span>
+                <span class="d-none d-sm-block">Sortează</span>
+            </button>
+        </div>
+        <div class="col-4 mb-1">
+            <button class="btn btn-primary d-inline-flex w-100" id="buton_resetare">
+                <span class="bi bi-arrow-clockwise"></span>
+                <span class="d-none d-sm-block">Resetează</span>
+            </button>
+        </div>
+        <div class="col-4 mb-1 text-nowrap">
+            <button class="btn btn-primary d-inline-flex w-100" id="buton_calculare">
+                <span class="bi bi-calculator"></span>
+                <span class="d-none d-sm-block">Medie putere</span>
+            </button>
+        </div>
+    </div>
+    <strong><p>Total produse care îndeplinesc condițiile de filtrare: <span id="nr-produse"><%=items.length%></span></p></strong>
 </div>

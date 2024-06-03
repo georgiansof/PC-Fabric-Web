@@ -9,15 +9,15 @@
             </div>
             <div id="meniu-mobil">
                 <ul>
-                    <li><a class="anch-meniu" href="">blaa</a></li>
-                    <li><a class="anch-meniu" href="">blaa</a></li>
-                    <li><a class="anch-meniu" href="">blaa</a></li>
-                    <li class="optiune-cu-submeniu"><a href="">blaa</a></li>
+                    <li><a class="anch-meniu" href="/index">Acasa</a></li>
+                    <li><a class="anch-meniu" href="/index/#welcome">Bine ați venit</a></li>
+                    <li><a class="anch-meniu optiune-cu-submeniu" href="#">Componente</a></li>
                     <ul>
-                        <li><a class="anch-meniu" href="">blaa</a></li>
-                        <li><a class="anch-meniu" href="">blaa</a></li>
+                        <% for(let componenta of defaultData.tipuri_componente) { %>
+                            <li><a class="anch-meniu" href="/<%=componenta%>"><%= componenta.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());%></a></li>
+                        <% } %>
                     </ul>
-                    <li><a class="anch-meniu" href="">blaa</a></li>
+                    <li><a class="anch-meniu" href="/galerie_statica">Galerie statica</a></li>
                 </ul>
             </div>
             <ul class="meniu">
@@ -35,14 +35,37 @@
                     </div>
                 </li>
 
-                <li class="submeniu"><a class="anch-meniu" href="/produse">Produse</a></li>
+                <li class="submeniu"><a class="anch-meniu" href="#">Componente</a>
+                    <div>
+                        <ul>
+                            <% for(let componenta of defaultData.tipuri_componente) { %>
+                                <li><a class="anch-meniu" href="/<%=componenta%>"><%= componenta.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());%></a></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </li>
+
                 <li class="submeniu"><a class="anch-meniu" href="/galerie_statica">Galerie statica</a></li>
-                <li class="submeniu"><a class="anch-meniu" href="/produse">Produse</a></li>
             </ul>
-            
-            <div id="header-name">
-                <h1>PC Fabric</h1>
+                <div id="header-name">
+                    <h1 class="text-logo">PC Fabric</h1>
+                </div>
             </div>
         </nav>
     </div>
 </header>
+
+<link href="https://cdn.jsdelivr.net/css-toggle-switch/latest/toggle-switch.css" rel="stylesheet" />
+<div style="width: 10rem; height: 2rem; right: 1rem; margin-top: 1rem;" class="position-absolute switch-toggle switch-3 switch-candy">
+    <input class="light-button" id="on" name="state-d" type="radio" checked="" />
+    <label style="user-select: none;" for="on" onclick="">✺</label>
+
+    <input class="neon-button" id="na" name="state-d" type="radio" checked="checked" />
+    <label style="user-select: none;" for="na" class="disabled" onclick="">🌠</label>
+
+    <input class="dark-button" id="off" name="state-d" type="radio" />
+    <label style="user-select: none;" for="off" onclick="">☽</label>
+
+    <a></a>
+</div>
+<script src="/resurse/js/schimba_tema.js"></script>
