@@ -10,32 +10,6 @@ Pagini:  <br/>
   Contact - Informații de contact despre magazinul fizic ( nu va exista, dar se va folosi ca demo o adresă reală precum a facultății pentru a integra locația cu google maps ). <br/>
   Autentificare/Administrare cont - Autentificare / Creare conturi care vor memora date cu caracter personal (nume, adresa, etc) folosite in scop de autofill. <br/>
 
-Site-uri similare: <br/>
-
-PC Garage - pcgarage.ro <br/>
-Pro: - Permite asamblarea componentelor (in diferite pachete, standard sau gold - cable management, etc. ) <br/>
-     - Permite crearea de wishlist-uri transmisibile prin link altor clienti <br/>
-Contra: - nu verifica in timp real (afaik) dacă componentele sunt compatibile <br/>
-        - nu verifica daca componentele se potrivesc fizic ( dimensiuni ) <br/>
-Altex.ro <br/>
-Pro: - Permite crearea unui cont <br/>
-     - Garanteaza pretul minim <br/>
-Contra: <br/>
-     - Nu permite asamblarea pieselor <br/>
-     - Nu este un site dedicat domeniului <br/>
-ForIT.ro <br/>
-Pro: - conține o varietate de produse legate de construirea unui PC ( precum filtre de praf, care nu se gasesc in alte parti) <br/>
-     - sistem de atentionare cand pretul scade sub o anumita valoare <br/>
-Contra: - Nu permite asamblarea pieselor ( sau cel putin serviciul nu este usor accesibil din punct de vedere UI/UX ) <br/>
-        - Afiseaza promotii catre reduceri de 1-2% in detrimentul unor reduceri mai serioase pe pagina principala <br/>
-ITGalaxy.ro <br/>
-Pro: - ofertele de pe prima pagina sunt asezate in categorii <br/>
-     - sistemul de categorizare/filtrare este rapid si ergonomic <br/>
-Contra: - Prima accesare este greoaie (pagina principala este resource-heavy) <br/>
-        - Butonul back duce uneori la erori (form resubmission, in locuri unde nici macar nu s-au completat date) <br/>
-
-Planul poate suferi modificări (pentru simplificare sau adăugare funcționalități, în funcție de deadline și starea proiectului). <br/>
-
 paleta de culori complementara:
 #EDE9E1
 #6881AD
